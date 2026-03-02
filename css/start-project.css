@@ -1,0 +1,612 @@
+/* ═══════════════════════════════════════════════════
+   ZURI STUDIO — Start a Project Page Styles
+   ═══════════════════════════════════════════════════ */
+
+/* ─── Page Hero ─── */
+.sp-hero {
+    padding: 200px 10% 100px;
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.sp-hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.sp-hero h1 {
+    color: var(--text-light);
+    font-size: clamp(3rem, 9vw, 7rem);
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin-bottom: 30px;
+}
+
+.sp-hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.sp-hero h1 .word {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+}
+
+.sp-hero__sub {
+    color: rgba(250, 245, 235, 0.5);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    max-width: 500px;
+    line-height: 1.7;
+}
+
+/* Decorative floating circles */
+.sp-hero__deco {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.sp-deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+}
+
+.sp-deco-circle--1 {
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    animation: rotateCircle 30s linear infinite;
+}
+
+.sp-deco-circle--2 {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    border-color: rgba(232, 93, 38, 0.15);
+    animation: rotateCircle 20s linear infinite reverse;
+}
+
+@keyframes rotateCircle {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* ─── Form Section Layout ─── */
+.sp-form-section {
+    padding: 100px 10% 140px;
+    background: var(--bg);
+    position: relative;
+}
+
+.sp-form-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 100px;
+    align-items: start;
+}
+
+/* ─── Info Panel (left) ─── */
+.sp-info {
+    position: sticky;
+    top: 120px;
+}
+
+.sp-info__block {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sp-info__block:last-of-type {
+    border-bottom: none;
+}
+
+.sp-info__label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.sp-info__val {
+    font-size: 1rem;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.sp-info__link {
+    text-decoration: none;
+    color: var(--text);
+    transition: color var(--duration-fast);
+}
+
+.sp-info__link:hover {
+    color: var(--accent);
+}
+
+.sp-service-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sp-service-list li {
+    font-size: 0.9rem;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    padding-left: 16px;
+}
+
+.sp-service-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+}
+
+.sp-info__quote {
+    margin-top: 50px;
+    padding: 30px;
+    background: var(--bg-dark);
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+}
+
+.sp-info__quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(250, 245, 235, 0.6);
+    font-style: italic;
+    margin: 0 0 12px;
+}
+
+.sp-info__quote cite {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-style: normal;
+}
+
+/* ─── Step Indicator ─── */
+.sp-steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 50px;
+}
+
+.sp-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.sp-step__num {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    transition: all var(--duration-med) var(--ease-out-expo);
+}
+
+.sp-step__label {
+    font-size: 0.77rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    transition: color var(--duration-med);
+}
+
+.sp-step.active .sp-step__num {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.sp-step.active .sp-step__label {
+    color: var(--text);
+}
+
+.sp-step.done .sp-step__num {
+    background: var(--accent-alt);
+    border-color: var(--accent-alt);
+    color: #fff;
+}
+
+.sp-step-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin: 0 16px;
+    min-width: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sp-step-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    transition: left var(--duration-slow) var(--ease-out-expo);
+}
+
+.sp-step-line.done::after {
+    left: 0;
+}
+
+/* ─── Fieldsets ─── */
+.sp-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.sp-fieldset.active {
+    display: block;
+    animation: fieldsetIn 0.5s var(--ease-out-expo);
+}
+
+@keyframes fieldsetIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.sp-fieldset__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* ─── Form Fields ─── */
+.sp-field {
+    margin-bottom: 28px;
+}
+
+.sp-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.sp-field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.sp-req {
+    color: var(--accent);
+}
+
+.sp-field input,
+.sp-field textarea,
+.sp-field select {
+    width: 100%;
+    padding: 16px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--border);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    border-radius: 0;
+    transition: border-color var(--duration-fast);
+    cursor: none;
+    appearance: none;
+}
+
+.sp-field input:focus,
+.sp-field textarea:focus,
+.sp-field select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.sp-field input::placeholder,
+.sp-field textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+.sp-field input[type="date"] {
+    color: var(--text);
+}
+
+.sp-field textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+}
+
+/* Select wrapper */
+.sp-select-wrap {
+    position: relative;
+}
+
+.sp-select-arrow {
+    position: absolute;
+    right: 4px;
+    bottom: 16px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    pointer-events: none;
+}
+
+/* ─── Radio buttons ─── */
+.sp-radio-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+.sp-radio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    cursor: none;
+    transition: all var(--duration-fast) var(--ease-out-expo);
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.sp-radio input[type="radio"] {
+    display: none;
+}
+
+.sp-radio__box {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color var(--duration-fast);
+}
+
+.sp-radio__box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.sp-radio:has(input:checked) {
+    border-color: var(--accent);
+    color: var(--text);
+    background: rgba(232, 93, 38, 0.04);
+}
+
+.sp-radio:has(input:checked) .sp-radio__box {
+    border-color: var(--accent);
+}
+
+.sp-radio:has(input:checked) .sp-radio__box::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.sp-radio:hover {
+    border-color: rgba(232, 93, 38, 0.4);
+}
+
+/* ─── Fieldset navigation ─── */
+.sp-fieldset__nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.sp-fieldset__nav--final {
+    border-top: 1px solid var(--border);
+    padding-top: 30px;
+}
+
+.sp-back {
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    padding: 16px 28px;
+    background: transparent;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: none;
+    transition: all var(--duration-fast) var(--ease-out-expo);
+    text-decoration: none;
+}
+
+.sp-back:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.sp-arrow {
+    margin-left: 6px;
+    display: inline-block;
+    transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.btn-primary:hover .sp-arrow {
+    transform: translateX(4px);
+}
+
+/* ─── Success State ─── */
+.sp-success {
+    text-align: center;
+    padding: 60px 20px;
+    animation: fieldsetIn 0.6s var(--ease-out-expo);
+}
+
+.sp-success__icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 24px;
+    animation: spinIn 0.6s var(--ease-out-expo) 0.2s both;
+}
+
+@keyframes spinIn {
+    from {
+        transform: rotate(-90deg) scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.sp-success__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.sp-success__msg {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1200px) {
+    .sp-form-layout {
+        grid-template-columns: 280px 1fr;
+        gap: 60px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sp-form-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .sp-info {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 40px;
+    }
+
+    .sp-info__quote {
+        grid-column: span 2;
+        margin-top: 20px;
+    }
+
+    .sp-hero {
+        padding: 160px 7% 80px;
+    }
+
+    .sp-form-section {
+        padding: 80px 7% 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sp-hero {
+        padding: 140px 6% 70px;
+    }
+
+    .sp-form-section {
+        padding: 60px 6% 80px;
+    }
+
+    .sp-info {
+        grid-template-columns: 1fr;
+    }
+
+    .sp-info__quote {
+        grid-column: span 1;
+    }
+
+    .sp-field-row {
+        grid-template-columns: 1fr;
+    }
+
+    .sp-radio-group {
+        grid-template-columns: 1fr;
+    }
+
+    .sp-steps {
+        gap: 0;
+    }
+
+    .sp-step__label {
+        display: none;
+    }
+
+    .sp-step-line {
+        min-width: 20px;
+    }
+
+    .sp-hero__deco {
+        display: none;
+    }
+}

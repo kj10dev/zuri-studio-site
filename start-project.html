@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Start your project with Zuri Studio. Tell us about your vision and we'll craft the perfect digital experience." />
+    <title>Start a Project — Zuri Studio</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/start-project.css" />
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="page-start-project">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Grain Overlay -->
+    <div class="grain"></div>
+
+    <!-- NAVBAR -->
+    <header class="navbar navbar--light">
+        <a href="index.html" class="logo">Zuri Studio</a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Work</a>
+            <a href="start-project.html" class="cta nav-active-cta">Start a Project</a>
+        </nav>
+        <button class="hamburger" aria-label="Toggle navigation menu">&#9776;</button>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="sp-hero">
+        <div class="sp-hero__inner">
+            <span class="section-label">Let's Build Together</span>
+            <h1 id="sp-heading">Tell Us About<br><em>Your Project.</em></h1>
+            <p class="sp-hero__sub">Fill in the form below and we'll get back to you within 24 hours
+                with a tailored proposal — no obligation.</p>
+        </div>
+        <div class="sp-hero__deco" aria-hidden="true">
+            <div class="sp-deco-circle sp-deco-circle--1"></div>
+            <div class="sp-deco-circle sp-deco-circle--2"></div>
+        </div>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section class="sp-form-section">
+        <div class="sp-form-layout">
+
+            <!-- LEFT — Info panel -->
+            <aside class="sp-info reveal">
+                <div class="sp-info__block">
+                    <span class="sp-info__label">Response Time</span>
+                    <p class="sp-info__val">Within 24 hours</p>
+                </div>
+                <div class="sp-info__block">
+                    <span class="sp-info__label">Email</span>
+                    <a href="mailto:hello@zuristudio.com" class="sp-info__val sp-info__link">hello@zuristudio.com</a>
+                </div>
+                <div class="sp-info__block">
+                    <span class="sp-info__label">Services</span>
+                    <ul class="sp-service-list">
+                        <li>Branding & Identity</li>
+                        <li>UX / UI Design</li>
+                        <li>Web Development</li>
+                        <li>Motion & 3D</li>
+                        <li>SEO & Strategy</li>
+                    </ul>
+                </div>
+                <div class="sp-info__quote reveal">
+                    <blockquote>
+                        "Great design isn't just what things look like — it's how they work and how they perform."
+                    </blockquote>
+                    <cite>— Zuri Studio</cite>
+                </div>
+            </aside>
+
+            <!-- RIGHT — The form -->
+            <div class="sp-form-wrap reveal">
+                <form class="sp-form" id="sp-form" novalidate>
+
+                    <!-- Step indicator -->
+                    <div class="sp-steps" aria-label="Form progress">
+                        <div class="sp-step active" data-step="1">
+                            <span class="sp-step__num">1</span>
+                            <span class="sp-step__label">About You</span>
+                        </div>
+                        <div class="sp-step-line"></div>
+                        <div class="sp-step" data-step="2">
+                            <span class="sp-step__num">2</span>
+                            <span class="sp-step__label">Your Project</span>
+                        </div>
+                        <div class="sp-step-line"></div>
+                        <div class="sp-step" data-step="3">
+                            <span class="sp-step__num">3</span>
+                            <span class="sp-step__label">Budget & Timeline</span>
+                        </div>
+                    </div>
+
+                    <!-- STEP 1 — About You -->
+                    <fieldset class="sp-fieldset active" data-fieldset="1">
+                        <legend class="sp-fieldset__title">About You</legend>
+
+                        <div class="sp-field-row">
+                            <div class="sp-field">
+                                <label for="fn">First Name <span class="sp-req">*</span></label>
+                                <input type="text" id="fn" name="firstName" placeholder="Jane" required />
+                            </div>
+                            <div class="sp-field">
+                                <label for="ln">Last Name <span class="sp-req">*</span></label>
+                                <input type="text" id="ln" name="lastName" placeholder="Smith" required />
+                            </div>
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="email">Email Address <span class="sp-req">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" />
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="company">Company / Organisation</label>
+                            <input type="text" id="company" name="company" placeholder="Your company name" />
+                        </div>
+
+                        <div class="sp-fieldset__nav">
+                            <button type="button" class="btn-primary sp-next" data-next="2">
+                                Next — Your Project <span class="sp-arrow">→</span>
+                            </button>
+                        </div>
+                    </fieldset>
+
+                    <!-- STEP 2 — Your Project -->
+                    <fieldset class="sp-fieldset" data-fieldset="2">
+                        <legend class="sp-fieldset__title">Your Project</legend>
+
+                        <div class="sp-field">
+                            <label for="service">Service Type <span class="sp-req">*</span></label>
+                            <div class="sp-select-wrap">
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected>Select a service…</option>
+                                    <option value="branding">Branding & Identity</option>
+                                    <option value="ux-ui">UX / UI Design</option>
+                                    <option value="web-dev">Web Development</option>
+                                    <option value="mobile-dev">Mobile Development</option>
+                                    <option value="motion">Micro Animation / Motion</option>
+                                    <option value="3d">3D Design</option>
+                                    <option value="seo">SEO & Strategy</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="sp-select-arrow">↓</span>
+                            </div>
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="description">Tell Us About Your Project <span class="sp-req">*</span></label>
+                            <textarea id="description" name="description" rows="5"
+                                placeholder="Describe your project, goals, target audience, and any inspiration…"
+                                required></textarea>
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="url">Existing Website / Reference URL</label>
+                            <input type="url" id="url" name="url" placeholder="https://yourwebsite.com" />
+                        </div>
+
+                        <div class="sp-fieldset__nav">
+                            <button type="button" class="sp-back btn-outline" data-back="1">← Back</button>
+                            <button type="button" class="btn-primary sp-next" data-next="3">
+                                Next — Budget & Timeline <span class="sp-arrow">→</span>
+                            </button>
+                        </div>
+                    </fieldset>
+
+                    <!-- STEP 3 — Budget & Timeline -->
+                    <fieldset class="sp-fieldset" data-fieldset="3">
+                        <legend class="sp-fieldset__title">Budget &amp; Timeline</legend>
+
+                        <div class="sp-field">
+                            <label>Budget Range <span class="sp-req">*</span></label>
+                            <div class="sp-radio-group" role="radiogroup" aria-label="Budget range">
+                                <label class="sp-radio">
+                                    <input type="radio" name="budget" value="under-5k" required />
+                                    <span class="sp-radio__box"></span>
+                                    <span>Under $5,000</span>
+                                </label>
+                                <label class="sp-radio">
+                                    <input type="radio" name="budget" value="5k-15k" />
+                                    <span class="sp-radio__box"></span>
+                                    <span>$5,000 – $15,000</span>
+                                </label>
+                                <label class="sp-radio">
+                                    <input type="radio" name="budget" value="15k-30k" />
+                                    <span class="sp-radio__box"></span>
+                                    <span>$15,000 – $30,000</span>
+                                </label>
+                                <label class="sp-radio">
+                                    <input type="radio" name="budget" value="30k-plus" />
+                                    <span class="sp-radio__box"></span>
+                                    <span>$30,000+</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="timeline">Ideal Start Date</label>
+                            <input type="date" id="timeline" name="timeline" />
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="deadline">Project Deadline / Launch Date</label>
+                            <input type="date" id="deadline" name="deadline" />
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="referral">How Did You Hear About Us?</label>
+                            <div class="sp-select-wrap">
+                                <select id="referral" name="referral">
+                                    <option value="" disabled selected>Select one…</option>
+                                    <option value="google">Google Search</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="referral">Friend / Referral</option>
+                                    <option value="dribbble">Dribbble / Behance</option>
+                                    <option value="portfolio">Portfolio Site</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="sp-select-arrow">↓</span>
+                            </div>
+                        </div>
+
+                        <div class="sp-field">
+                            <label for="extra">Anything Else We Should Know?</label>
+                            <textarea id="extra" name="extra" rows="3"
+                                placeholder="Additional context, files to share, special requirements…"></textarea>
+                        </div>
+
+                        <div class="sp-fieldset__nav sp-fieldset__nav--final">
+                            <button type="button" class="sp-back btn-outline" data-back="2">← Back</button>
+                            <button type="submit" class="btn-primary sp-submit" id="sp-submit">
+                                Send My Brief <span class="sp-arrow">✦</span>
+                            </button>
+                        </div>
+                    </fieldset>
+
+                    <!-- Success state -->
+                    <div class="sp-success" id="sp-success" hidden>
+                        <div class="sp-success__icon" aria-hidden="true">✦</div>
+                        <h2 class="sp-success__title">Brief Received!</h2>
+                        <p class="sp-success__msg">Thank you for reaching out. We'll review your brief and be in touch
+                            within <strong>24 hours</strong> with a tailored proposal.</p>
+                        <a href="projects.html" class="btn-outline" style="margin-top: 30px; display: inline-block;">
+                            View Our Work
+                        </a>
+                    </div>
+
+                </form>
+            </div><!-- /.sp-form-wrap -->
+        </div><!-- /.sp-form-layout -->
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-wordmark">Zuri Studio</div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zuri Studio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Dribbble</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/pages.js"></script>
+</body>
+
+</html>

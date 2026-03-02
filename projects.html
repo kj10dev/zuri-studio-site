@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Browse the full portfolio of Zuri Studio — branding, UX/UI, web development, motion design and more." />
+    <title>Projects — Zuri Studio</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="page-projects">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Grain Overlay -->
+    <div class="grain"></div>
+
+    <!-- NAVBAR -->
+    <header class="navbar navbar--light">
+        <a href="index.html" class="logo">Zuri Studio</a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="nav-active">Work</a>
+            <a href="start-project.html" class="cta">Start a Project</a>
+        </nav>
+        <button class="hamburger" aria-label="Toggle navigation menu">&#9776;</button>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero__inner">
+            <span class="section-label">Our Portfolio</span>
+            <h1 id="projects-heading">Work That <em>Speaks</em> for Itself.</h1>
+            <p class="page-hero__sub">A curated selection of projects spanning branding, digital product design,
+                web development and motion.</p>
+        </div>
+        <div class="page-hero__scroll-line"></div>
+    </section>
+
+    <!-- PROJECT FILTERS -->
+    <section class="projects-section">
+        <div class="filters" id="filters">
+            <button class="filter-btn active" data-filter="all">All Work</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+            <button class="filter-btn" data-filter="ux-ui">UX / UI</button>
+            <button class="filter-btn" data-filter="web-dev">Web Dev</button>
+            <button class="filter-btn" data-filter="motion">Motion</button>
+        </div>
+
+        <!-- PROJECT GRID -->
+        <div class="projects-grid" id="projects-grid">
+
+            <!-- Project 1 -->
+            <article class="project-card project-card--wide reveal" data-category="ux-ui branding">
+                <a href="#" class="project-card__link" aria-label="View Nova Finance project">
+                    <div class="project-card__img-wrap">
+                        <div class="project-card__img project-card__img--1"></div>
+                        <div class="project-card__overlay">
+                            <span class="project-card__view">View Project →</span>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <div class="project-card__meta">
+                            <span class="project-card__num">01</span>
+                            <div class="project-card__tags">
+                                <span class="tag">UX / UI</span>
+                                <span class="tag">Branding</span>
+                            </div>
+                        </div>
+                        <h2 class="project-card__title">Nova Finance</h2>
+                        <p class="project-card__desc">A complete digital identity and app experience for a
+                            next-generation
+                            fintech startup. Designed for clarity and conversion.</p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card reveal" data-category="web-dev">
+                <a href="#" class="project-card__link" aria-label="View Alpha Apparel project">
+                    <div class="project-card__img-wrap">
+                        <div class="project-card__img project-card__img--2"></div>
+                        <div class="project-card__overlay">
+                            <span class="project-card__view">View Project →</span>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <div class="project-card__meta">
+                            <span class="project-card__num">02</span>
+                            <div class="project-card__tags">
+                                <span class="tag">Web Dev</span>
+                                <span class="tag">E-Commerce</span>
+                            </div>
+                        </div>
+                        <h2 class="project-card__title">Alpha Apparel</h2>
+                        <p class="project-card__desc">High-performance Shopify storefront built for a premium streetwear
+                            label.</p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card reveal" data-category="branding">
+                <a href="#" class="project-card__link" aria-label="View Orion Coffee project">
+                    <div class="project-card__img-wrap">
+                        <div class="project-card__img project-card__img--3"></div>
+                        <div class="project-card__overlay">
+                            <span class="project-card__view">View Project →</span>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <div class="project-card__meta">
+                            <span class="project-card__num">03</span>
+                            <div class="project-card__tags">
+                                <span class="tag">Branding</span>
+                                <span class="tag">Packaging</span>
+                            </div>
+                        </div>
+                        <h2 class="project-card__title">Orion Coffee</h2>
+                        <p class="project-card__desc">Brand identity, packaging, and campaign visuals for an artisan
+                            coffee roaster.</p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="project-card project-card--wide reveal" data-category="motion ux-ui">
+                <a href="#" class="project-card__link" aria-label="View Lumina Health project">
+                    <div class="project-card__img-wrap">
+                        <div class="project-card__img project-card__img--4"></div>
+                        <div class="project-card__overlay">
+                            <span class="project-card__view">View Project →</span>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <div class="project-card__meta">
+                            <span class="project-card__num">04</span>
+                            <div class="project-card__tags">
+                                <span class="tag">Motion</span>
+                                <span class="tag">UX / UI</span>
+                            </div>
+                        </div>
+                        <h2 class="project-card__title">Lumina Health</h2>
+                        <p class="project-card__desc">Motion-first health app design. Micro-animations, onboarding
+                            flows, and
+                            a design system built to scale across platforms.</p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 5 -->
+            <article class="project-card reveal" data-category="web-dev branding">
+                <a href="#" class="project-card__link" aria-label="View Vertex Architecture project">
+                    <div class="project-card__img-wrap">
+                        <div class="project-card__img project-card__img--5"></div>
+                        <div class="project-card__overlay">
+                            <span class="project-card__view">View Project →</span>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <div class="project-card__meta">
+                            <span class="project-card__num">05</span>
+                            <div class="project-card__tags">
+                                <span class="tag">Web Dev</span>
+                                <span class="tag">Branding</span>
+                            </div>
+                        </div>
+                        <h2 class="project-card__title">Vertex Architecture</h2>
+                        <p class="project-card__desc">Full brand overhaul and bespoke website for a leading
+                            architectural practice.</p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 6 -->
+            <article class="project-card reveal" data-category="motion">
+                <a href="#" class="project-card__link" aria-label="View Flux Motion project">
+                    <div class="project-card__img-wrap">
+                        <div class="project-card__img project-card__img--6"></div>
+                        <div class="project-card__overlay">
+                            <span class="project-card__view">View Project →</span>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <div class="project-card__meta">
+                            <span class="project-card__num">06</span>
+                            <div class="project-card__tags">
+                                <span class="tag">Motion</span>
+                                <span class="tag">3D</span>
+                            </div>
+                        </div>
+                        <h2 class="project-card__title">Flux Motion Reel</h2>
+                        <p class="project-card__desc">A showreel of 3D animation and micro-interaction design for
+                            product launches.</p>
+                    </div>
+                </a>
+            </article>
+
+        </div><!-- /.projects-grid -->
+
+        <!-- CTA Strip -->
+        <div class="projects-cta reveal">
+            <p>Have a project in mind?</p>
+            <a href="start-project.html" class="btn-primary">Start a Project</a>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-wordmark">Zuri Studio</div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zuri Studio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Dribbble</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/pages.js"></script>
+</body>
+
+</html>
