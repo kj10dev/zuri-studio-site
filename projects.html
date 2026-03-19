@@ -70,7 +70,7 @@
 
             <!-- Project 1 -->
             <article class="project-card project-card--wide reveal" data-category="ux-ui branding">
-                <a href="#" class="project-card__link" aria-label="View Nova Finance project">
+                <a href="#" class="project-card__link" data-project-id="1" aria-label="View Nova Finance project">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--1"></div>
                         <div class="project-card__overlay">
@@ -95,7 +95,7 @@
 
             <!-- Project 2 -->
             <article class="project-card reveal" data-category="web-dev">
-                <a href="#" class="project-card__link" aria-label="View Alpha Apparel project">
+                <a href="#" class="project-card__link" data-project-id="2" aria-label="View Alpha Apparel project">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--2"></div>
                         <div class="project-card__overlay">
@@ -119,7 +119,7 @@
 
             <!-- Project 3 -->
             <article class="project-card reveal" data-category="branding">
-                <a href="#" class="project-card__link" aria-label="View Orion Coffee project">
+                <a href="#" class="project-card__link" data-project-id="3" aria-label="View Orion Coffee project">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--3"></div>
                         <div class="project-card__overlay">
@@ -143,7 +143,7 @@
 
             <!-- Project 4 -->
             <article class="project-card project-card--wide reveal" data-category="motion ux-ui">
-                <a href="#" class="project-card__link" aria-label="View Lumina Health project">
+                <a href="#" class="project-card__link" data-project-id="4" aria-label="View Lumina Health project">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--4"></div>
                         <div class="project-card__overlay">
@@ -168,7 +168,7 @@
 
             <!-- Project 5 -->
             <article class="project-card reveal" data-category="web-dev branding">
-                <a href="#" class="project-card__link" aria-label="View Vertex Architecture project">
+                <a href="#" class="project-card__link" data-project-id="5" aria-label="View Vertex Architecture project">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--5"></div>
                         <div class="project-card__overlay">
@@ -192,7 +192,7 @@
 
             <!-- Project 6 -->
             <article class="project-card reveal" data-category="motion">
-                <a href="#" class="project-card__link" aria-label="View Flux Motion project">
+                <a href="#" class="project-card__link" data-project-id="6" aria-label="View Flux Motion project">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--6"></div>
                         <div class="project-card__overlay">
@@ -239,6 +239,166 @@
     </footer>
 
     <script src="js/pages.js"></script>
+    <script>
+        // ─── Modal Logic (Inlined for file:// compatibility) ───
+        const PROJECTS_DATA = {
+            1: {
+                num: '01',
+                title: 'Nova Finance',
+                tags: ['UX / UI', 'Branding'],
+                imgClass: 'project-card__img--1',
+                desc: 'A complete digital identity and app experience for a next-generation fintech startup. Designed for clarity and conversion.',
+                challenge: 'Nova Finance entered a crowded market where trust is everything. They needed an identity system that felt credible, modern, and approachable.',
+                solution: 'We built a dual-brand system: a high-contrast editorial identity for marketing, and a warm, accessible design system for the app itself.',
+                result: 'App store rating improved from 3.2 → 4.7 within 90 days. Onboarding completion rate increased by 62%.'
+            },
+            2: {
+                num: '02',
+                title: 'Alpha Apparel',
+                tags: ['Web Dev', 'E-Commerce'],
+                imgClass: 'project-card__img--2',
+                desc: 'High-performance Shopify storefront built for a premium streetwear label.',
+                challenge: 'Drop releases were crashing the site, and conversion was suffering on mobile.',
+                solution: 'Custom Shopify 2.0 theme built with optimized loading and a queue-based drop system.',
+                result: 'Page load time reduced to 1.1s. Mobile conversion rate up 38%.'
+            },
+            3: {
+                num: '03',
+                title: 'Orion Coffee',
+                tags: ['Branding', 'Packaging'],
+                imgClass: 'project-card__img--3',
+                desc: 'Brand identity, packaging, and campaign visuals for an artisan coffee roaster.',
+                challenge: 'No visual language strong enough to support national retail expansion.',
+                solution: 'A celestial-inspired brand world translated across bags, bands, and photographic campaigns.',
+                result: 'Secured national distribution in 3 grocery chains within 6 months.'
+            },
+            4: {
+                num: '04',
+                title: 'Lumina Health',
+                tags: ['Motion', 'UX / UI'],
+                imgClass: 'project-card__img--4',
+                desc: 'Motion-first health app design. Micro-animations and onboarding flows built to scale.',
+                challenge: 'Health apps can be anxiety-inducing. Lumina needed a calm, human experience.',
+                solution: 'Motion strategy led the design, mapping transitions to emotional states.',
+                result: 'User-reported anxiety dropped 41%. session length up 55%.'
+            },
+            5: {
+                num: '05',
+                title: 'Vertex Architecture',
+                tags: ['Web Dev', 'Branding'],
+                imgClass: 'project-card__img--5',
+                desc: 'Full brand overhaul and bespoke website for a leading architectural practice.',
+                challenge: 'Vertex had an impressive portfolio hidden behind a dated website.',
+                solution: 'A geometric identity paired with a bespoke website that lets architecture breathe.',
+                result: 'RFP win rate improved by 29% in six months.'
+            },
+            6: {
+                num: '06',
+                title: 'Flux Motion Reel',
+                tags: ['Motion', '3D'],
+                imgClass: 'project-card__img--6',
+                desc: 'A showreel of 3D animation and micro-interaction design for product launches.',
+                challenge: 'Flux needed a piece that could open doors with tier-1 clients.',
+                solution: 'We art-directed a 90-second hero reel with custom transitions.',
+                result: 'Directly led to engagements with two Fortune 500 brands.'
+            }
+        };
+
+        function initModal() {
+            const modal = document.getElementById('project-modal');
+            const panel = document.getElementById('pmodal-panel');
+            const backdrop = document.getElementById('pmodal-backdrop');
+            const closeBtn = document.getElementById('pmodal-close');
+            
+            if (!modal) return;
+
+            function open(id) {
+                const data = PROJECTS_DATA[id];
+                if (!data) return;
+
+                document.getElementById('pmodal-img').className = 'pmodal__img ' + data.imgClass;
+                document.getElementById('pmodal-tags').innerHTML = data.tags.map(t => `<span class="tag">${t}</span>`).join('');
+                document.getElementById('pmodal-num').textContent = data.num;
+                document.getElementById('pmodal-title').textContent = data.title;
+                document.getElementById('pmodal-desc').textContent = data.desc;
+                document.getElementById('pmodal-challenge').textContent = data.challenge;
+                document.getElementById('pmodal-solution').textContent = data.solution;
+                document.getElementById('pmodal-result').textContent = data.result;
+
+                modal.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+                if (typeof lenis !== 'undefined') lenis.stop();
+
+                gsap.to(backdrop, { opacity: 1, duration: 0.4 });
+                gsap.to(panel, { x: '0%', duration: 0.6, ease: 'power4.out' });
+            }
+
+            function close() {
+                gsap.to(backdrop, { opacity: 0, duration: 0.3 });
+                gsap.to(panel, { 
+                    x: '100%', 
+                    duration: 0.5, 
+                    ease: 'power4.in',
+                    onComplete: () => {
+                        modal.classList.remove('is-open');
+                        document.body.style.overflow = '';
+                        if (typeof lenis !== 'undefined') lenis.start();
+                    }
+                });
+            }
+
+            document.querySelectorAll('.project-card__link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const id = link.getAttribute('data-project-id');
+                    if (id) open(id);
+                });
+            });
+
+            closeBtn.addEventListener('click', close);
+            backdrop.addEventListener('click', close);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+            });
+        }
+
+        // Initialize immediately and on load
+        initModal();
+        window.addEventListener('DOMContentLoaded', initModal);
+    </script>
+
+    <!-- PROJECT DETAIL MODAL -->
+    <div id="project-modal" class="pmodal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pmodal-title">
+        <div class="pmodal__backdrop" id="pmodal-backdrop"></div>
+        <div class="pmodal__panel" id="pmodal-panel">
+            <button class="pmodal__close" id="pmodal-close" aria-label="Close project detail">&#x2715;</button>
+            <div class="pmodal__img-wrap">
+                <div class="pmodal__img" id="pmodal-img"></div>
+            </div>
+            <div class="pmodal__body">
+                <div class="pmodal__tags" id="pmodal-tags"></div>
+                <span class="pmodal__num" id="pmodal-num"></span>
+                <h2 class="pmodal__title" id="pmodal-title"></h2>
+                <p class="pmodal__desc" id="pmodal-desc"></p>
+                <div class="pmodal__divider"></div>
+                <div class="pmodal__details">
+                    <div class="pmodal__detail-block">
+                        <span class="pmodal__detail-label">Challenge</span>
+                        <p class="pmodal__detail-text" id="pmodal-challenge"></p>
+                    </div>
+                    <div class="pmodal__detail-block">
+                        <span class="pmodal__detail-label">Solution</span>
+                        <p class="pmodal__detail-text" id="pmodal-solution"></p>
+                    </div>
+                    <div class="pmodal__detail-block">
+                        <span class="pmodal__detail-label">Results</span>
+                        <p class="pmodal__detail-text" id="pmodal-result"></p>
+                    </div>
+                </div>
+                <a href="start-project.html" class="btn-primary pmodal__cta">Start a Similar Project &rarr;</a>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

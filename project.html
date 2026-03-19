@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project — Zuri Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+</head>
+
+<body class="page-project-detail">
+  <header class="navbar navbar--light">
+    <a href="index.html" class="logo">Zuri Studio</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Work</a>
+      <a href="start-project.html" class="cta">Start a Project</a>
+    </nav>
+    <button class="hamburger" aria-label="Toggle navigation menu">☰</button>
+  </header>
+
+  <main style="padding:160px 10% 80px;">
+    <div id="project-root">
+      <h1 id="project-title">Project</h1>
+      <p id="project-desc">Loading project content…</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-wordmark">Zuri Studio</div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Zuri Studio. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Work</a>
+        <a href="start-project.html">Start a Project</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Dribbble</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal client-side mapping using the existing PROJECTS_DATA from projects.html
+    const PROJECTS = {
+      1: { title: 'Nova Finance', desc: 'A complete digital identity and app experience for a next-generation fintech startup.' },
+      2: { title: 'Alpha Apparel', desc: 'High-performance Shopify storefront built for a premium streetwear label.' },
+      3: { title: 'Orion Coffee', desc: 'Brand identity, packaging, and campaign visuals for an artisan coffee roaster.' },
+      4: { title: 'Lumina Health', desc: 'Motion-first health app design. Micro-animations and onboarding flows.' },
+      5: { title: 'Vertex Architecture', desc: 'Full brand overhaul and bespoke website for a leading architectural practice.' },
+      6: { title: 'Flux Motion Reel', desc: 'A showreel of 3D animation and micro-interaction design.' }
+    };
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    const pid = getQueryParam('project');
+    const root = document.getElementById('project-root');
+    if (!pid || !PROJECTS[pid]) {
+      root.innerHTML = '<p>Project not found. <a href="projects.html">Back to Work</a></p>';
+    } else {
+      const p = PROJECTS[pid];
+      document.getElementById('project-title').textContent = p.title;
+      document.getElementById('project-desc').textContent = p.desc;
+    }
+  </script>
+</body>
+
+</html>

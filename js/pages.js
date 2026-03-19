@@ -312,3 +312,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// ─── Shared Logic for all pages (Optional) ───
+// This file can now house shared logic that isn't modal-specific,
+// while modal logic lives in projects.html for file:// compatibility.

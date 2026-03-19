@@ -415,3 +415,219 @@
         height: 260px;
     }
 }
+
+
+/* ═══════════════════════════════════════════════════
+   PROJECT DETAIL MODAL
+   ═══════════════════════════════════════════════════ */
+
+.pmodal {
+    position: fixed;
+    inset: 0;
+    z-index: 600;
+    display: none;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+.pmodal.is-open {
+    display: flex;
+}
+
+/* Dark backdrop */
+.pmodal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 17, 16, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    cursor: none;
+}
+
+/* Slide-in panel */
+.pmodal__panel {
+    position: relative;
+    z-index: 1;
+    width: 580px;
+    max-width: 100vw;
+    height: 100%;
+    max-height: 100vh;
+    box-sizing: border-box;
+    background: var(--bg-dark);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    transform: translateX(100%);
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(250,245,235,0.12) transparent;
+}
+
+.pmodal__panel::-webkit-scrollbar { width: 4px; }
+.pmodal__panel::-webkit-scrollbar-track { background: transparent; }
+.pmodal__panel::-webkit-scrollbar-thumb { background: rgba(250,245,235,0.12); border-radius: 2px; }
+
+/* Close button */
+.pmodal__close {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    align-self: flex-end;
+    margin: 24px 24px 0 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-light);
+    background: rgba(250, 245, 235, 0.06);
+    color: var(--text-light);
+    font-size: 1rem;
+    cursor: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--duration-fast), border-color var(--duration-fast), transform var(--duration-fast);
+    flex-shrink: 0;
+}
+
+.pmodal__close:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: rotate(90deg);
+}
+
+/* Hero image */
+.pmodal__img-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-top: -20px;
+}
+
+.pmodal__img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.pmodal__panel:hover .pmodal__img {
+    transform: scale(1.03);
+}
+
+/* Body content */
+.pmodal__body {
+    padding: 40px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.pmodal__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.pmodal__tags .tag {
+    border-color: var(--border-light);
+    color: rgba(250,245,235,0.5);
+}
+
+.pmodal__num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.pmodal__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--text-light);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 18px;
+}
+
+.pmodal__desc {
+    font-size: 0.95rem;
+    color: rgba(250,245,235,0.55);
+    line-height: 1.75;
+    margin-bottom: 40px;
+}
+
+/* Divider */
+.pmodal__divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-light);
+    margin-bottom: 40px;
+}
+
+/* Details grid */
+.pmodal__details {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+.pmodal__detail-block {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.pmodal__detail-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    padding-top: 4px;
+}
+
+.pmodal__detail-text {
+    font-size: 0.9rem;
+    color: rgba(250, 245, 235, 0.65);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* CTA */
+.pmodal__cta {
+    align-self: flex-start;
+    margin-top: 8px;
+}
+
+/* ─── Modal Responsive ─── */
+@media (max-width: 640px) {
+    .pmodal__panel {
+        width: 100%;
+        border-radius: 24px 24px 0 0;
+        height: 92vh;
+        align-self: flex-end;
+    }
+
+    .pmodal {
+        align-items: flex-end;
+    }
+
+    .pmodal__body {
+        padding: 28px 24px 48px;
+    }
+
+    .pmodal__detail-block {
+        grid-template-columns: 90px 1fr;
+    }
+}
