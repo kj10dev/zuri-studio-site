@@ -247,6 +247,7 @@ const mat1 = new THREE.MeshStandardMaterial({
   transparent: true,
   opacity: 0.15,
 });
+
 const shape1 = new THREE.Mesh(geo1, mat1);
 scene.add(shape1);
 
