@@ -372,6 +372,49 @@
                 if (body) body.scrollTop = 0;
             }
 
+            // ── Wheel forwarding ──────────────────────────────────
+            // Lenis intercepts all wheel events globally. When the modal
+            // is open we stop Lenis, but the wheel events still need to
+            // reach the modal body. We capture them at the window level
+            // and manually scroll the body div.
+            let wheelHandler = null;
+            let touchStartY  = 0;
+            let touchHandler = null;
+            let touchMoveHandler = null;
+
+            function attachScrollForwarding() {
+                wheelHandler = (e) => {
+                    if (!modal.classList.contains('is-open')) return;
+                    // Only forward if the pointer is over the dialog
+                    if (!dialog.contains(e.target) && e.target !== dialog) return;
+                    e.preventDefault();
+                    body.scrollTop += e.deltaY;
+                };
+
+                touchHandler = (e) => {
+                    touchStartY = e.touches[0].clientY;
+                };
+
+                touchMoveHandler = (e) => {
+                    if (!modal.classList.contains('is-open')) return;
+                    if (!dialog.contains(e.target)) return;
+                    const delta = touchStartY - e.touches[0].clientY;
+                    touchStartY = e.touches[0].clientY;
+                    body.scrollTop += delta;
+                };
+
+                window.addEventListener('wheel', wheelHandler, { passive: false });
+                window.addEventListener('touchstart', touchHandler, { passive: true });
+                window.addEventListener('touchmove', touchMoveHandler, { passive: true });
+            }
+
+            function detachScrollForwarding() {
+                if (wheelHandler)     window.removeEventListener('wheel', wheelHandler);
+                if (touchHandler)     window.removeEventListener('touchstart', touchHandler);
+                if (touchMoveHandler) window.removeEventListener('touchmove', touchMoveHandler);
+                wheelHandler = touchHandler = touchMoveHandler = null;
+            }
+
             // ── Open ─────────────────────────────────────────────
             function open(id) {
                 populate(id);
@@ -379,8 +422,9 @@
                 modal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
                 if (typeof lenis !== 'undefined') lenis.stop();
+                attachScrollForwarding();
 
-                // Ensure modal body is focusable and receive focus so users can scroll inside it
+                // Focus the body so keyboard (Space / arrow keys) scroll works
                 if (body) {
                     body.setAttribute('tabindex', '0');
                     try { body.focus({ preventScroll: true }); } catch (e) { body.focus(); }
@@ -395,6 +439,7 @@
 
             // ── Close ────────────────────────────────────────────
             function close() {
+                detachScrollForwarding();
                 gsap.to(backdrop, { opacity: 0, duration: 0.28, ease: 'power2.in' });
                 gsap.to(dialog, {
                     opacity: 0, scale: 0.95, y: 12,
