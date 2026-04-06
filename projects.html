@@ -63,6 +63,7 @@
             <button class="filter-btn" data-filter="ux-ui">UX / UI</button>
             <button class="filter-btn" data-filter="web-dev">Web Dev</button>
             <button class="filter-btn" data-filter="motion">Motion</button>
+            <button class="filter-btn" data-filter="graphic">Graphic Design</button>
         </div>
 
         <!-- PROJECT GRID -->
@@ -70,7 +71,7 @@
 
             <!-- Project 1 -->
             <article class="project-card project-card--wide reveal" data-category="ux-ui branding">
-                <a href="#" class="project-card__link" data-project-id="1" aria-label="View Nova Finance project">
+                <a href="www.jawsdentistry.co.za" class="project-card__link" data-project-id="1" aria-label="View Jaws Family Dentistry">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--1"></div>
                         <div class="project-card__overlay">
@@ -83,12 +84,13 @@
                             <div class="project-card__tags">
                                 <span class="tag">UX / UI</span>
                                 <span class="tag">Branding</span>
+                                <span class="tag">Web Dev</span>
                             </div>
                         </div>
-                        <h2 class="project-card__title">Nova Finance</h2>
-                        <p class="project-card__desc">A complete digital identity and app experience for a
-                            next-generation
-                            fintech startup. Designed for clarity and conversion.</p>
+                        <h2 class="project-card__title">Jaws Family Dentistry</h2>
+                        <p class="project-card__desc">A modern dental practice
+                            website designed to build trust, simplify bookings, and elevate 
+                            the patient experience across every touchpoint.</p>
                     </div>
                 </a>
             </article>
@@ -118,8 +120,8 @@
             </article>
 
             <!-- Project 3 -->
-            <article class="project-card reveal" data-category="branding">
-                <a href="#" class="project-card__link" data-project-id="3" aria-label="View Orion Coffee project">
+            <article class="project-card reveal" data-category="branding grahic">
+                <a href="#" class="project-card__link" data-project-id="3" aria-label="View Littlefootprints aftercare">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--3"></div>
                         <div class="project-card__overlay">
@@ -131,10 +133,10 @@
                             <span class="project-card__num">03</span>
                             <div class="project-card__tags">
                                 <span class="tag">Branding</span>
-                                <span class="tag">Packaging</span>
+                                <span class="tag">Graphic Design</span>
                             </div>
                         </div>
-                        <h2 class="project-card__title">Orion Coffee</h2>
+                        <h2 class="project-card__title">Littlefootprints</h2>
                         <p class="project-card__desc">Brand identity, packaging, and campaign visuals for an artisan
                             coffee roaster.</p>
                     </div>
@@ -244,12 +246,12 @@
         const PROJECTS_DATA = {
             1: {
                 num: '01',
-                title: 'Nova Finance',
+                title: 'Jaws Family Dentistry',
                 tags: ['UX / UI', 'Branding'],
                 imgClass: 'project-card__img--1',
-                desc: 'A complete digital identity and app experience for a next-generation fintech startup. Designed for clarity, trust, and conversion across every touchpoint.',
+                desc: 'A modern dental practice website designed to build trust, simplify bookings, and elevate the patient experience across every touchpoint.',
                 stats: [{ value: '4.7★', label: 'App Store Rating' }, { value: '+62%', label: 'Onboarding Rate' }, { value: '90', label: 'Days to Results' }],
-                challenge: 'Nova Finance entered a crowded market where trust is everything. They needed an identity system that felt credible, modern, and approachable — not like another cold fintech product.',
+                challenge: 'The existing digital experience lacked clarity, consistency, and conversion focus. Patients struggled to navigate services, trust signals were minimal, and booking flows created unnecessary friction — leading to missed opportunities and low engagement.',
                 solution: 'We built a dual-brand system: a high-contrast editorial identity for marketing, and a warm, accessible design system for the app itself. Typography, colour, and motion all worked in concert.',
                 result: 'App store rating improved from 3.2 → 4.7 within 90 days. Onboarding completion rate increased by 62%, directly lifting monthly active users.'
             },
@@ -266,8 +268,8 @@
             },
             3: {
                 num: '03',
-                title: 'Orion Coffee',
-                tags: ['Branding', 'Packaging'],
+                title: 'Little footprints',
+                tags: ['Branding', 'Graphic Design'],
                 imgClass: 'project-card__img--3',
                 desc: 'Brand identity, packaging system, and campaign visuals for an artisan coffee roaster aiming for national retail shelves.',
                 stats: [{ value: '3', label: 'Grocery Chains' }, { value: '6mo', label: 'Time to Retail' }, { value: '★★★★★', label: 'Press Coverage' }],
