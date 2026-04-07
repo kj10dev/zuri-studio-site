@@ -626,7 +626,7 @@ canvas#bg {
 }
 
 .contact-text a {
-  color: var(--accent);
+  color: white;
   text-decoration: none;
   font-weight: 500;
   transition: opacity var(--duration-fast);

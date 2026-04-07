@@ -168,7 +168,8 @@
 
             <!-- Project 5 -->
             <article class="project-card reveal" data-category="web-dev branding">
-                <a href="#" class="project-card__link" data-project-id="5" aria-label="View Vertex Architecture project">
+                <a href="#" class="project-card__link" data-project-id="5"
+                    aria-label="View Vertex Architecture project">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--5"></div>
                         <div class="project-card__overlay">
@@ -243,67 +244,121 @@
         // ─── Project Data ───────────────────────────────────────
         const PROJECTS_DATA = {
             1: {
-                num: '01',
-                title: 'Nova Finance',
-                tags: ['UX / UI', 'Branding'],
+                num: '01', title: 'Nova Finance', tags: ['UX / UI', 'Branding'],
                 imgClass: 'project-card__img--1',
+                url: null,
                 desc: 'A complete digital identity and app experience for a next-generation fintech startup. Designed for clarity, trust, and conversion across every touchpoint.',
-                stats: [{ value: '4.7★', label: 'App Store Rating' }, { value: '+62%', label: 'Onboarding Rate' }, { value: '90', label: 'Days to Results' }],
+                stats: [
+                    { value: '4.7★', label: 'App Store Rating' },
+                    { value: '+62%', label: 'Onboarding Rate' },
+                    { value: '90 Days', label: 'Time to Results' }
+                ],
+                media: [
+                    { type: 'image', g: 'pmed--g1', caption: 'Brand Identity System' },
+                    { type: 'image', g: 'pmed--g3', caption: 'Typography & Colour' },
+                    { type: 'video', g: 'pmed--g5', caption: 'Onboarding Flow Demo' },
+                    { type: 'image', g: 'pmed--g4', caption: 'Mobile App UI' }
+                ],
                 challenge: 'Nova Finance entered a crowded market where trust is everything. They needed an identity system that felt credible, modern, and approachable — not like another cold fintech product.',
                 solution: 'We built a dual-brand system: a high-contrast editorial identity for marketing, and a warm, accessible design system for the app itself. Typography, colour, and motion all worked in concert.',
                 result: 'App store rating improved from 3.2 → 4.7 within 90 days. Onboarding completion rate increased by 62%, directly lifting monthly active users.'
             },
             2: {
-                num: '02',
-                title: 'Alpha Apparel',
-                tags: ['Web Dev', 'E-Commerce'],
+                num: '02', title: 'Alpha Apparel', tags: ['Web Dev', 'E-Commerce'],
                 imgClass: 'project-card__img--2',
+                url: 'https://alphaapparel.co',
                 desc: 'High-performance Shopify storefront engineered for a premium streetwear label known for hyped limited-edition drops.',
-                stats: [{ value: '1.1s', label: 'Page Load' }, { value: '+38%', label: 'Mobile CVR' }, { value: '0', label: 'Crash Incidents' }],
+                stats: [
+                    { value: '1.1s', label: 'Page Load Time' },
+                    { value: '+38%', label: 'Mobile Conversion' },
+                    { value: '0', label: 'Crash Incidents' }
+                ],
+                media: [
+                    { type: 'image', g: 'pmed--g6', caption: 'Homepage Design' },
+                    { type: 'image', g: 'pmed--g3', caption: 'Product Detail Page' },
+                    { type: 'video', g: 'pmed--g1', caption: 'Drop Launch Experience' },
+                    { type: 'image', g: 'pmed--g8', caption: 'Mobile Checkout Flow' }
+                ],
                 challenge: 'Drop releases were crashing the site under load, and conversion was suffering badly on mobile, costing the brand thousands in lost sales per drop.',
-                solution: 'Custom Shopify 2.0 theme built with optimized asset loading, edge caching, and a queue-based drop system that gracefully handles traffic spikes.',
+                solution: 'Custom Shopify 2.0 theme built with optimised asset loading, edge caching, and a queue-based drop system that gracefully handles traffic spikes.',
                 result: 'Page load time reduced to 1.1s. Mobile conversion rate up 38%. Zero site crashes during the next three drops.'
             },
             3: {
-                num: '03',
-                title: 'Orion Coffee',
-                tags: ['Branding', 'Packaging'],
+                num: '03', title: 'Orion Coffee', tags: ['Branding', 'Packaging'],
                 imgClass: 'project-card__img--3',
+                url: null,
                 desc: 'Brand identity, packaging system, and campaign visuals for an artisan coffee roaster aiming for national retail shelves.',
-                stats: [{ value: '3', label: 'Grocery Chains' }, { value: '6mo', label: 'Time to Retail' }, { value: '★★★★★', label: 'Press Coverage' }],
+                stats: [
+                    { value: '3', label: 'Retail Chains Won' },
+                    { value: '6 mo', label: 'Time to Retail' },
+                    { value: '5★', label: 'Press Coverage' }
+                ],
+                media: [
+                    { type: 'image', g: 'pmed--g2', caption: 'Packaging System' },
+                    { type: 'image', g: 'pmed--g7', caption: 'Brand Identity Mark' },
+                    { type: 'image', g: 'pmed--g5', caption: 'Campaign Visuals' },
+                    { type: 'image', g: 'pmed--g3', caption: 'Brew Guide Design' }
+                ],
                 challenge: 'Orion had a passionate following but no visual language strong enough to support national retail expansion. Shelf presence was invisible.',
                 solution: 'A celestial-inspired brand world — stars, constellations, and deep-space gradients — translated across bags, bands, brew guides and photographic campaigns.',
                 result: 'Secured national distribution partnerships with 3 major grocery chains within just 6 months of launch.'
             },
             4: {
-                num: '04',
-                title: 'Lumina Health',
-                tags: ['Motion', 'UX / UI'],
+                num: '04', title: 'Lumina Health', tags: ['Motion', 'UX / UI'],
                 imgClass: 'project-card__img--4',
+                url: null,
                 desc: 'Motion-first health app design. Micro-animations, onboarding flows, and a design system built to scale across platforms and future features.',
-                stats: [{ value: '-41%', label: 'User Anxiety' }, { value: '+55%', label: 'Session Length' }, { value: '100+', label: 'Motion Tokens' }],
+                stats: [
+                    { value: '-41%', label: 'User Anxiety' },
+                    { value: '+55%', label: 'Session Length' },
+                    { value: '100+', label: 'Motion Tokens' }
+                ],
+                media: [
+                    { type: 'video', g: 'pmed--g4', caption: 'Onboarding Animation' },
+                    { type: 'image', g: 'pmed--g1', caption: 'Dashboard UI' },
+                    { type: 'image', g: 'pmed--g3', caption: 'Design System' },
+                    { type: 'image', g: 'pmed--g5', caption: 'Motion Tokens Doc' }
+                ],
                 challenge: 'Health apps can be anxiety-inducing. Lumina needed a calm, human experience that felt supportive rather than clinical.',
                 solution: 'Motion strategy led the design process. Every transition was mapped to an emotional state, creating a UI that literally felt calmer as users navigated deeper.',
                 result: 'User-reported anxiety dropped 41% post-launch. Average session length up 55%. The motion system is now core brand IP.'
             },
             5: {
-                num: '05',
-                title: 'Vertex Architecture',
-                tags: ['Web Dev', 'Branding'],
+                num: '05', title: 'Vertex Architecture', tags: ['Web Dev', 'Branding'],
                 imgClass: 'project-card__img--5',
+                url: 'https://vertexarchitecture.com',
                 desc: 'Full brand overhaul and a bespoke, award-worthy website for one of the most ambitious architectural practices in the region.',
-                stats: [{ value: '+29%', label: 'RFP Win Rate' }, { value: '2×', label: 'Site Traffic' }, { value: '4', label: 'Awards Won' }],
+                stats: [
+                    { value: '+29%', label: 'RFP Win Rate' },
+                    { value: '2×', label: 'Organic Traffic' },
+                    { value: '4', label: 'Awards Won' }
+                ],
+                media: [
+                    { type: 'image', g: 'pmed--g3', caption: 'Homepage Design' },
+                    { type: 'image', g: 'pmed--g6', caption: 'Project Case Study' },
+                    { type: 'image', g: 'pmed--g8', caption: 'Brand Mark' },
+                    { type: 'image', g: 'pmed--g5', caption: 'Mobile Experience' }
+                ],
                 challenge: 'Vertex had an impressive portfolio hidden behind a dated website and a brand that undersold their ambition. Clients were choosing competitors on visual first impression.',
                 solution: 'A geometric identity — sharp angles, disciplined grid, restrained black-and-white — paired with a bespoke website that lets the architecture breathe at full width.',
                 result: 'RFP win rate improved by 29% in the first six months. Organic site traffic doubled. Won 4 regional web design awards.'
             },
             6: {
-                num: '06',
-                title: 'Flux Motion Reel',
-                tags: ['Motion', '3D'],
+                num: '06', title: 'Flux Motion Reel', tags: ['Motion', '3D'],
                 imgClass: 'project-card__img--6',
+                url: 'https://vimeo.com/fluxmotion',
                 desc: 'A showreel of 3D animation and micro-interaction design engineered to open boardroom doors with tier-1 product brands.',
-                stats: [{ value: '2', label: 'Fortune 500 Deals' }, { value: '90s', label: 'Hero Reel' }, { value: '4K', label: 'Delivery' }],
+                stats: [
+                    { value: '2', label: 'Fortune 500 Deals' },
+                    { value: '90s', label: 'Hero Reel Length' },
+                    { value: '4K', label: 'Delivery Format' }
+                ],
+                media: [
+                    { type: 'video', g: 'pmed--g7', caption: 'Hero Showreel' },
+                    { type: 'video', g: 'pmed--g2', caption: 'Product Launch Scene' },
+                    { type: 'image', g: 'pmed--g5', caption: '3D Asset Library' },
+                    { type: 'image', g: 'pmed--g8', caption: 'Sound Design Notes' }
+                ],
                 challenge: 'Flux needed a single piece that could demonstrate their full range of 3D and motion capability in under 2 minutes — and open doors with Fortune 500 brands.',
                 solution: 'We art-directed a 90-second hero reel with custom transitions, sound design, and a 4K delivery pipeline. Every scene was built to be repurposed as a standalone asset.',
                 result: 'The reel directly led to engagement conversations with two Fortune 500 brands within 60 days of release.'
@@ -314,41 +369,67 @@
         const PROJECT_IDS = [1, 2, 3, 4, 5, 6];
 
         // ─── Modal Controller ────────────────────────────────────
-        // Run modal initialization after DOM is parsed so elements exist
         document.addEventListener('DOMContentLoaded', function initModal() {
-            const modal   = document.getElementById('project-modal');
-            const dialog  = document.getElementById('pmodal-dialog');
-            const body    = document.getElementById('pmodal-body');
+            const modal = document.getElementById('project-modal');
+            const dialog = document.getElementById('pmodal-dialog');
+            const body = document.getElementById('pmodal-body');
             const backdrop = document.getElementById('pmodal-backdrop');
             const closeBtn = document.getElementById('pmodal-close');
-            const prevBtn  = document.getElementById('pmodal-prev');
-            const nextBtn  = document.getElementById('pmodal-next');
-            const counter  = document.getElementById('pmodal-counter');
+            const prevBtn = document.getElementById('pmodal-prev');
+            const nextBtn = document.getElementById('pmodal-next');
+            const counter = document.getElementById('pmodal-counter');
 
             if (!modal) return;
 
             let currentId = null;
+            let lbMedia = [];
+            let lbCurrent = 0;
 
-            // ── Populate ──────────────────────────────────────────
+            function renderLightbox() {
+                const m = lbMedia[lbCurrent];
+                const med = document.getElementById('pmed-lb-media');
+                const cap = document.getElementById('pmed-lb-caption');
+                const ctr = document.getElementById('pmed-lb-counter');
+                const prev = document.getElementById('pmed-lb-prev');
+                const next = document.getElementById('pmed-lb-next');
+                med.className = 'pmed-lb__media ' + m.g;
+                med.innerHTML = m.type === 'video'
+                    ? `<span class="pmed-lb__play"><svg viewBox="0 0 24 24" fill="currentColor" width="52" height="52"><path d="M8 5v14l11-7z"/></svg></span><p class="pmed-lb__vid-note">Video available on the live site</p>`
+                    : '';
+                cap.textContent = m.caption;
+                ctr.textContent = `${lbCurrent + 1} / ${lbMedia.length}`;
+                prev.disabled = lbCurrent === 0;
+                next.disabled = lbCurrent === lbMedia.length - 1;
+            }
+
+            function openLightbox(media, idx) {
+                lbMedia = media; lbCurrent = idx;
+                renderLightbox();
+                const lbEl = document.getElementById('pmodal-lightbox');
+                lbEl.classList.add('is-open');
+                lbEl.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeLightbox() {
+                const lbEl = document.getElementById('pmodal-lightbox');
+                lbEl.classList.remove('is-open');
+                lbEl.setAttribute('aria-hidden', 'true');
+            }
+
             function populate(id) {
                 const d = PROJECTS_DATA[id];
                 if (!d) return;
                 currentId = id;
 
-                // Header
-                document.getElementById('pmodal-header-num').textContent   = d.num;
+                document.getElementById('pmodal-header-num').textContent = d.num;
                 document.getElementById('pmodal-header-title').textContent = d.title;
-                document.getElementById('pmodal-header-tags').innerHTML    =
+                document.getElementById('pmodal-header-tags').innerHTML =
                     d.tags.map(t => `<span class="tag">${t}</span>`).join('');
 
-                // Hero image
                 document.getElementById('pmodal-img').className = 'pmodal__img ' + d.imgClass;
-
-                // Content
                 document.getElementById('pmodal-title-lg').textContent = d.title;
-                document.getElementById('pmodal-lead').textContent     = d.desc;
+                document.getElementById('pmodal-lead').textContent = d.desc;
 
-                // Stats
                 const statsEl = document.getElementById('pmodal-stats');
                 statsEl.innerHTML = d.stats.map(s =>
                     `<div class="pmodal__stat">
@@ -357,35 +438,52 @@
                     </div>`
                 ).join('');
 
-                // Details
                 document.getElementById('pmodal-challenge').textContent = d.challenge;
-                document.getElementById('pmodal-solution').textContent  = d.solution;
-                document.getElementById('pmodal-result').textContent    = d.result;
+                document.getElementById('pmodal-solution').textContent = d.solution;
+                document.getElementById('pmodal-result').textContent = d.result;
 
-                // Nav counter
                 const idx = PROJECT_IDS.indexOf(id);
                 counter.textContent = `${idx + 1} / ${PROJECT_IDS.length}`;
                 prevBtn.disabled = (idx === 0);
                 nextBtn.disabled = (idx === PROJECT_IDS.length - 1);
 
-                // Scroll body to top
                 if (body) body.scrollTop = 0;
+
+                const siteLinkEl = document.getElementById('pmodal-site-link');
+                if (siteLinkEl) {
+                    if (d.url) { siteLinkEl.href = d.url; siteLinkEl.hidden = false; }
+                    else { siteLinkEl.hidden = true; }
+                }
+
+                const galleryWrap = document.getElementById('pmodal-gallery-wrap');
+                const galleryEl = document.getElementById('pmodal-gallery');
+                if (galleryEl && d.media && d.media.length) {
+                    galleryEl.innerHTML = d.media.map((m, i) => `
+                        <button class="pmed__item" data-mi="${i}" aria-label="${m.caption}">
+                            <div class="pmed__thumb ${m.g}">
+                                ${m.type === 'video'
+                            ? `<span class="pmed__play-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M8 5v14l11-7z"/></svg></span>`
+                            : ''}
+                            </div>
+                            <span class="pmed__cap">${m.caption}</span>
+                        </button>`).join('');
+                    galleryEl.querySelectorAll('.pmed__item').forEach(btn =>
+                        btn.addEventListener('click', () => openLightbox(d.media, +btn.dataset.mi))
+                    );
+                    if (galleryWrap) galleryWrap.hidden = false;
+                } else {
+                    if (galleryWrap) galleryWrap.hidden = true;
+                }
             }
 
-            // ── Wheel forwarding ──────────────────────────────────
-            // Lenis intercepts all wheel events globally. When the modal
-            // is open we stop Lenis, but the wheel events still need to
-            // reach the modal body. We capture them at the window level
-            // and manually scroll the body div.
             let wheelHandler = null;
-            let touchStartY  = 0;
+            let touchStartY = 0;
             let touchHandler = null;
             let touchMoveHandler = null;
 
             function attachScrollForwarding() {
                 wheelHandler = (e) => {
                     if (!modal.classList.contains('is-open')) return;
-                    // Only forward if the pointer is over the dialog
                     if (!dialog.contains(e.target) && e.target !== dialog) return;
                     e.preventDefault();
                     body.scrollTop += e.deltaY;
@@ -409,13 +507,12 @@
             }
 
             function detachScrollForwarding() {
-                if (wheelHandler)     window.removeEventListener('wheel', wheelHandler);
-                if (touchHandler)     window.removeEventListener('touchstart', touchHandler);
+                if (wheelHandler) window.removeEventListener('wheel', wheelHandler);
+                if (touchHandler) window.removeEventListener('touchstart', touchHandler);
                 if (touchMoveHandler) window.removeEventListener('touchmove', touchMoveHandler);
                 wheelHandler = touchHandler = touchMoveHandler = null;
             }
 
-            // ── Open ─────────────────────────────────────────────
             function open(id) {
                 populate(id);
                 modal.classList.add('is-open');
@@ -424,7 +521,6 @@
                 if (typeof lenis !== 'undefined') lenis.stop();
                 attachScrollForwarding();
 
-                // Focus the body so keyboard (Space / arrow keys) scroll works
                 if (body) {
                     body.setAttribute('tabindex', '0');
                     try { body.focus({ preventScroll: true }); } catch (e) { body.focus(); }
@@ -437,7 +533,6 @@
                 );
             }
 
-            // ── Close ────────────────────────────────────────────
             function close() {
                 detachScrollForwarding();
                 gsap.to(backdrop, { opacity: 0, duration: 0.28, ease: 'power2.in' });
@@ -453,20 +548,19 @@
                 });
             }
 
-            // ── Navigation ───────────────────────────────────────
             function navigate(dir) {
                 const idx = PROJECT_IDS.indexOf(currentId);
                 const nextIdx = idx + dir;
                 if (nextIdx < 0 || nextIdx >= PROJECT_IDS.length) return;
 
-                /* Quick crossfade of content */
-                gsap.to(dialog, { opacity: 0.5, scale: 0.985, duration: 0.18, onComplete: () => {
-                    populate(PROJECT_IDS[nextIdx]);
-                    gsap.to(dialog, { opacity: 1, scale: 1, duration: 0.3, ease: 'power3.out' });
-                }});
+                gsap.to(dialog, {
+                    opacity: 0.5, scale: 0.985, duration: 0.18, onComplete: () => {
+                        populate(PROJECT_IDS[nextIdx]);
+                        gsap.to(dialog, { opacity: 1, scale: 1, duration: 0.3, ease: 'power3.out' });
+                    }
+                });
             }
 
-            // ── Event Listeners ──────────────────────────────────
             document.querySelectorAll('.project-card__link').forEach(link => {
                 link.addEventListener('click', e => {
                     e.preventDefault();
@@ -481,13 +575,28 @@
             nextBtn.addEventListener('click', () => navigate(1));
 
             document.addEventListener('keydown', e => {
+                const lbEl = document.getElementById('pmodal-lightbox');
+                if (lbEl && lbEl.classList.contains('is-open')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft' && lbCurrent > 0) { lbCurrent--; renderLightbox(); }
+                    if (e.key === 'ArrowRight' && lbCurrent < lbMedia.length - 1) { lbCurrent++; renderLightbox(); }
+                    return;
+                }
                 if (!modal.classList.contains('is-open')) return;
-                if (e.key === 'Escape')     close();
+                if (e.key === 'Escape') close();
                 if (e.key === 'ArrowRight') navigate(1);
-                if (e.key === 'ArrowLeft')  navigate(-1);
+                if (e.key === 'ArrowLeft') navigate(-1);
             });
 
-            // Trap focus inside modal when open
+            document.getElementById('pmed-lb-close').addEventListener('click', closeLightbox);
+            document.getElementById('pmed-lb-bg').addEventListener('click', closeLightbox);
+            document.getElementById('pmed-lb-prev').addEventListener('click', () => {
+                if (lbCurrent > 0) { lbCurrent--; renderLightbox(); }
+            });
+            document.getElementById('pmed-lb-next').addEventListener('click', () => {
+                if (lbCurrent < lbMedia.length - 1) { lbCurrent++; renderLightbox(); }
+            });
+
             modal.addEventListener('keydown', e => {
                 if (e.key !== 'Tab') return;
                 const focusable = modal.querySelectorAll('button, a, [tabindex]:not([tabindex="-1"])');
@@ -503,7 +612,8 @@
     <!-- ══════════════════════════════════════════════════════
          PROJECT DETAIL MODAL — v2
          ══════════════════════════════════════════════════════ -->
-    <div id="project-modal" class="pmodal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pmodal-title-lg">
+    <div id="project-modal" class="pmodal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="pmodal-title-lg" aria-describedby="pmodal-lead">
 
         <!-- Glassmorphism backdrop -->
         <div class="pmodal__backdrop" id="pmodal-backdrop"></div>
@@ -520,7 +630,8 @@
                 </div>
                 <button class="pmodal__close" id="pmodal-close" aria-label="Close project">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.75"
+                            stroke-linecap="round" />
                     </svg>
                 </button>
             </header>
@@ -544,6 +655,14 @@
 
                     <!-- Stats row -->
                     <div class="pmodal__stats" id="pmodal-stats"></div>
+
+                    <!-- Media gallery -->
+                    <div class="pmodal__gallery-wrap" id="pmodal-gallery-wrap" hidden>
+                        <div class="pmodal__gallery-hd">
+                            <span class="pmodal__gallery-label">Project Media</span>
+                        </div>
+                        <div class="pmodal__gallery" id="pmodal-gallery" role="list"></div>
+                    </div>
 
                     <!-- Section rule -->
                     <div class="pmodal__rule">
@@ -580,23 +699,39 @@
 
             <!-- ── Sticky Footer ── -->
             <footer class="pmodal__footer">
-                <a href="start-project.html" class="pmodal__footer-cta">
-                    Start a Similar Project
-                    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+                <div class="pmodal__footer-left">
+                    <!-- Shown only when project has a url (toggled by JS) -->
+                    <a href="#" class="pmodal__site-link" id="pmodal-site-link"
+                       target="_blank" rel="noopener noreferrer" hidden>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                             stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        Visit Live Site
+                    </a>
+                    <a href="start-project.html" class="pmodal__footer-cta">
+                        Start a Similar Project
+                        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
 
                 <nav class="pmodal__nav" aria-label="Browse projects">
                     <button class="pmodal__nav-btn" id="pmodal-prev" aria-label="Previous project">
                         <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 1L3 7L9 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 1L3 7L9 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </button>
                     <span class="pmodal__nav-counter" id="pmodal-counter">1 / 6</span>
                     <button class="pmodal__nav-btn" id="pmodal-next" aria-label="Next project">
                         <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 1L11 7L5 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 1L11 7L5 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </button>
                 </nav>
@@ -604,6 +739,36 @@
 
         </div><!-- /.pmodal__dialog -->
     </div><!-- /.pmodal -->
+
+    <!-- ── Project Media Lightbox ──────────────────────────── -->
+    <div id="pmodal-lightbox" class="pmed-lightbox" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-label="Media viewer">
+        <div class="pmed-lb__bg" id="pmed-lb-bg"></div>
+        <div class="pmed-lb__shell">
+            <div class="pmed-lb__media" id="pmed-lb-media"></div>
+            <div class="pmed-lb__footer">
+                <p class="pmed-lb__caption" id="pmed-lb-caption"></p>
+                <span class="pmed-lb__counter" id="pmed-lb-counter"></span>
+            </div>
+        </div>
+        <button class="pmed-lb__close" id="pmed-lb-close" aria-label="Close media viewer">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+            </svg>
+        </button>
+        <button class="pmed-lb__nav pmed-lb__nav--prev" id="pmed-lb-prev" aria-label="Previous image" disabled>
+            <svg viewBox="0 0 14 14" fill="none">
+                <path d="M9 1L3 7L9 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+        <button class="pmed-lb__nav pmed-lb__nav--next" id="pmed-lb-next" aria-label="Next image">
+            <svg viewBox="0 0 14 14" fill="none">
+                <path d="M5 1L11 7L5 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div><!-- /.pmed-lightbox -->
 
 </body>
 
