@@ -1322,6 +1322,14 @@
     gap: 12px;
 }
 
+/* Cursor hint for fullscreen-able images */
+.pmed-lb__media {
+    cursor: zoom-in;
+}
+.pmed-lb__media:fullscreen {
+    cursor: zoom-out;
+}
+
 .pmed-lb__play {
     color: rgba(250, 245, 235, 0.9);
     display: flex;

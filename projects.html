@@ -215,6 +215,29 @@
                 </a>
             </article>
 
+            <!-- Project 7 (Zuri Studio) -->
+            <article class="project-card reveal" data-category="ux-ui web-dev motion">
+                <a href="#" class="project-card__link" data-project-id="7" aria-label="View Zuri Studio project">
+                    <div class="project-card__img-wrap">
+                        <div class="project-card__img project-card__img--1"></div>
+                        <div class="project-card__overlay">
+                            <span class="project-card__view">View Project →</span>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <div class="project-card__meta">
+                            <span class="project-card__num">07</span>
+                            <div class="project-card__tags">
+                                <span class="tag">UX / UI</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                        </div>
+                        <h2 class="project-card__title">Zuri Studio — Agency</h2>
+                        <p class="project-card__desc">Strategic design, motion-led UI and performance-focused web builds.</p>
+                    </div>
+                </a>
+            </article>
+
         </div><!-- /.projects-grid -->
 
         <!-- CTA Strip -->
@@ -363,10 +386,29 @@
                 solution: 'We art-directed a 90-second hero reel with custom transitions, sound design, and a 4K delivery pipeline. Every scene was built to be repurposed as a standalone asset.',
                 result: 'The reel directly led to engagement conversations with two Fortune 500 brands within 60 days of release.'
             }
+            ,
+            7: {
+                num: '07', title: 'Zuri Studio — Agency', tags: ['UX / UI', 'Web Dev', 'Motion'],
+                imgClass: 'project-card__img--1',
+                url: null,
+                desc: 'We design and build high-performance digital experiences that combine strategy, design and technology to engage users and drive growth.',
+                stats: [
+                    { value: 'Performance-first', label: 'Optimised Builds' },
+                    { value: 'Design + Motion', label: 'Brand Systems' },
+                    { value: 'End-to-end', label: 'Delivery' }
+                ],
+                media: [
+                    { type: 'image', g: 'pmed--g1', caption: 'Zuri Studio — Work Showcase' },
+                    { type: 'image', g: 'pmed--g3', caption: 'Design System Snapshot' }
+                ],
+                challenge: 'Clients needed design systems and sites that looked premium while remaining fast and maintainable.',
+                solution: 'We combine strategic planning, modular design systems and motion-led UI to create scalable, high-performance sites.',
+                result: 'Launch-ready sites that improve user engagement and support measurable business outcomes.'
+            }
         };
 
         // Ordered list of project IDs for navigation
-        const PROJECT_IDS = [1, 2, 3, 4, 5, 6];
+        const PROJECT_IDS = [1, 2, 3, 4, 5, 6, 7];
 
         // ─── Modal Controller ────────────────────────────────────
         document.addEventListener('DOMContentLoaded', function initModal() {
@@ -393,6 +435,7 @@
                 const prev = document.getElementById('pmed-lb-prev');
                 const next = document.getElementById('pmed-lb-next');
                 med.className = 'pmed-lb__media ' + m.g;
+                med.dataset.type = m.type;
                 med.innerHTML = m.type === 'video'
                     ? `<span class="pmed-lb__play"><svg viewBox="0 0 24 24" fill="currentColor" width="52" height="52"><path d="M8 5v14l11-7z"/></svg></span><p class="pmed-lb__vid-note">Video available on the live site</p>`
                     : '';
@@ -597,6 +640,28 @@
                 if (lbCurrent < lbMedia.length - 1) { lbCurrent++; renderLightbox(); }
             });
 
+            // Click media to enter fullscreen for images
+            const pmedMediaEl = document.getElementById('pmed-lb-media');
+            if (pmedMediaEl) {
+                pmedMediaEl.addEventListener('click', () => {
+                    try {
+                        if (pmedMediaEl.dataset.type === 'image' && document.fullscreenEnabled) {
+                            pmedMediaEl.requestFullscreen().catch(() => {});
+                        }
+                    } catch (e) { /* ignore */ }
+                });
+            }
+
+            // Auto-open modal if URL hash includes an open request, e.g. #open-7 or #project-7
+            const hashMatch = location.hash.match(/#(?:open-|project-)(\d+)/);
+            if (hashMatch) {
+                const idFromHash = parseInt(hashMatch[1], 10);
+                if (!isNaN(idFromHash) && PROJECT_IDS.includes(idFromHash)) {
+                    // small delay to ensure modal elements are initialized
+                    setTimeout(() => open(idFromHash), 120);
+                }
+            }
+
             modal.addEventListener('keydown', e => {
                 if (e.key !== 'Tab') return;
                 const focusable = modal.querySelectorAll('button, a, [tabindex]:not([tabindex="-1"])');
@@ -701,13 +766,14 @@
             <footer class="pmodal__footer">
                 <div class="pmodal__footer-left">
                     <!-- Shown only when project has a url (toggled by JS) -->
-                    <a href="#" class="pmodal__site-link" id="pmodal-site-link"
-                       target="_blank" rel="noopener noreferrer" hidden>
+                    <a href="#" class="pmodal__site-link" id="pmodal-site-link" target="_blank"
+                        rel="noopener noreferrer" hidden>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                             stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                         </svg>
                         Visit Live Site
                     </a>
