@@ -3,15 +3,15 @@
    Inspired by Pentagram & Analogue Agency
    ═══════════════════════════════════════════════════ */
 
-/* ─── Palette ─── */
+/* ─── Palette — 4-colour brand: black, orange, green, cream ─── */
 :root {
-  --bg: #FAF5EB;
-  --bg-dark: #111110;
-  --bg-dark-2: #1a1a18;
-  --accent: #E85D26;
-  --accent-hover: #d14e1e;
-  --accent-alt: #2B7A3D;
-  --text: #111110;
+  --bg: #FAF5EB;             /* Cream white — light base */
+  --bg-dark: #111110;        /* Black — primary dark */
+  --bg-dark-2: #1a1a18;      /* Near-black */
+  --accent: #E85D26;         /* Orange — primary accent */
+  --accent-hover: #d14e1e;   /* Deeper orange for hover */
+  --accent-alt: #2B7A3D;     /* Forest green — subtle secondary */
+  --text: #111110;           /* Black — body text */
   --text-light: #FAF5EB;
   --muted: #7a7868;
   --border: rgba(17, 17, 16, 0.08);
@@ -973,4 +973,33 @@ footer {
     padding: 12px 0;
     font-size: 0.9rem;
   }
+}
+
+.whatsapp {
+  position:fixed;
+  bottom : 50px;
+  right: 50px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8%;
+    height: 8%;
+    background-color: var(orange);
+    border-radius: 50%;
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background-color: var(--white);
+    transform: translateY(-10px);
+}
+
+.zuri-logo-nav{
+    height: 25%;
+    width: 25%;
 }

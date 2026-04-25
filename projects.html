@@ -7,6 +7,8 @@
     <meta name="description"
         content="Browse the full portfolio of Zuri Studio — branding, UX/UI, web development, motion design and more." />
     <title>Projects — Zuri Studio</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/zuri/Letterface Logo.svg">
+
 
     <!-- Fonts -->
     <link
@@ -35,7 +37,9 @@
 
     <!-- NAVBAR -->
     <header class="navbar navbar--light">
-        <a href="index.html" class="logo">Zuri Studio</a>
+        <a href="index.html" class="logo">
+            <img src="./assets/images/zuri/TextLogo.svg" class="zuri-logo-nav">
+        </a>
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="projects.html" class="nav-active">Work</a>
@@ -62,15 +66,18 @@
             <button class="filter-btn" data-filter="branding">Branding</button>
             <button class="filter-btn" data-filter="ux-ui">UX / UI</button>
             <button class="filter-btn" data-filter="web-dev">Web Dev</button>
+            <button class="filter-btn" data-filter="app-dev">App Dev</button>
+            <button class="filter-btn" data-filter="e-comm">E-Commerce</button>
             <button class="filter-btn" data-filter="motion">Motion</button>
+            <button class="filter-btn" data-filter="3D">3D</button>
         </div>
 
         <!-- PROJECT GRID -->
         <div class="projects-grid" id="projects-grid">
 
             <!-- Project 1 -->
-            <article class="project-card project-card--wide reveal" data-category="ux-ui branding">
-                <a href="#" class="project-card__link" data-project-id="1" aria-label="View Nova Finance project">
+            <article class="project-card project-card--wide reveal" data-category="ux-ui branding web-dev">
+                <a href="#" class="project-card__link" data-project-id="1" aria-label="View Jaws Family Dentistry">
                     <div class="project-card__img-wrap">
                         <div class="project-card__img project-card__img--1"></div>
                         <div class="project-card__overlay">
@@ -83,9 +90,10 @@
                             <div class="project-card__tags">
                                 <span class="tag">UX / UI</span>
                                 <span class="tag">Branding</span>
+                                <span class="tag">Web Development</span>
                             </div>
                         </div>
-                        <h2 class="project-card__title">Nova Finance</h2>
+                        <h2 class="project-card__title">Jaws Family Dentistry</h2>
                         <p class="project-card__desc">A complete digital identity and app experience for a
                             next-generation
                             fintech startup. Designed for clarity and conversion.</p>
@@ -113,127 +121,6 @@
                         <h2 class="project-card__title">Alpha Apparel</h2>
                         <p class="project-card__desc">High-performance Shopify storefront built for a premium streetwear
                             label.</p>
-                    </div>
-                </a>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project-card reveal" data-category="branding">
-                <a href="#" class="project-card__link" data-project-id="3" aria-label="View Orion Coffee project">
-                    <div class="project-card__img-wrap">
-                        <div class="project-card__img project-card__img--3"></div>
-                        <div class="project-card__overlay">
-                            <span class="project-card__view">View Project →</span>
-                        </div>
-                    </div>
-                    <div class="project-card__info">
-                        <div class="project-card__meta">
-                            <span class="project-card__num">03</span>
-                            <div class="project-card__tags">
-                                <span class="tag">Branding</span>
-                                <span class="tag">Packaging</span>
-                            </div>
-                        </div>
-                        <h2 class="project-card__title">Orion Coffee</h2>
-                        <p class="project-card__desc">Brand identity, packaging, and campaign visuals for an artisan
-                            coffee roaster.</p>
-                    </div>
-                </a>
-            </article>
-
-            <!-- Project 4 -->
-            <article class="project-card project-card--wide reveal" data-category="motion ux-ui">
-                <a href="#" class="project-card__link" data-project-id="4" aria-label="View Lumina Health project">
-                    <div class="project-card__img-wrap">
-                        <div class="project-card__img project-card__img--4"></div>
-                        <div class="project-card__overlay">
-                            <span class="project-card__view">View Project →</span>
-                        </div>
-                    </div>
-                    <div class="project-card__info">
-                        <div class="project-card__meta">
-                            <span class="project-card__num">04</span>
-                            <div class="project-card__tags">
-                                <span class="tag">Motion</span>
-                                <span class="tag">UX / UI</span>
-                            </div>
-                        </div>
-                        <h2 class="project-card__title">Lumina Health</h2>
-                        <p class="project-card__desc">Motion-first health app design. Micro-animations, onboarding
-                            flows, and
-                            a design system built to scale across platforms.</p>
-                    </div>
-                </a>
-            </article>
-
-            <!-- Project 5 -->
-            <article class="project-card reveal" data-category="web-dev branding">
-                <a href="#" class="project-card__link" data-project-id="5"
-                    aria-label="View Vertex Architecture project">
-                    <div class="project-card__img-wrap">
-                        <div class="project-card__img project-card__img--5"></div>
-                        <div class="project-card__overlay">
-                            <span class="project-card__view">View Project →</span>
-                        </div>
-                    </div>
-                    <div class="project-card__info">
-                        <div class="project-card__meta">
-                            <span class="project-card__num">05</span>
-                            <div class="project-card__tags">
-                                <span class="tag">Web Dev</span>
-                                <span class="tag">Branding</span>
-                            </div>
-                        </div>
-                        <h2 class="project-card__title">Vertex Architecture</h2>
-                        <p class="project-card__desc">Full brand overhaul and bespoke website for a leading
-                            architectural practice.</p>
-                    </div>
-                </a>
-            </article>
-
-            <!-- Project 6 -->
-            <article class="project-card reveal" data-category="motion">
-                <a href="#" class="project-card__link" data-project-id="6" aria-label="View Flux Motion project">
-                    <div class="project-card__img-wrap">
-                        <div class="project-card__img project-card__img--6"></div>
-                        <div class="project-card__overlay">
-                            <span class="project-card__view">View Project →</span>
-                        </div>
-                    </div>
-                    <div class="project-card__info">
-                        <div class="project-card__meta">
-                            <span class="project-card__num">06</span>
-                            <div class="project-card__tags">
-                                <span class="tag">Motion</span>
-                                <span class="tag">3D</span>
-                            </div>
-                        </div>
-                        <h2 class="project-card__title">Flux Motion Reel</h2>
-                        <p class="project-card__desc">A showreel of 3D animation and micro-interaction design for
-                            product launches.</p>
-                    </div>
-                </a>
-            </article>
-
-            <!-- Project 7 (Zuri Studio) -->
-            <article class="project-card reveal" data-category="ux-ui web-dev motion">
-                <a href="#" class="project-card__link" data-project-id="7" aria-label="View Zuri Studio project">
-                    <div class="project-card__img-wrap">
-                        <div class="project-card__img project-card__img--1"></div>
-                        <div class="project-card__overlay">
-                            <span class="project-card__view">View Project →</span>
-                        </div>
-                    </div>
-                    <div class="project-card__info">
-                        <div class="project-card__meta">
-                            <span class="project-card__num">07</span>
-                            <div class="project-card__tags">
-                                <span class="tag">UX / UI</span>
-                                <span class="tag">Web Dev</span>
-                            </div>
-                        </div>
-                        <h2 class="project-card__title">Zuri Studio — Agency</h2>
-                        <p class="project-card__desc">Strategic design, motion-led UI and performance-focused web builds.</p>
                     </div>
                 </a>
             </article>
@@ -267,9 +154,9 @@
         // ─── Project Data ───────────────────────────────────────
         const PROJECTS_DATA = {
             1: {
-                num: '01', title: 'Nova Finance', tags: ['UX / UI', 'Branding'],
+                num: '01', title: 'Jaws Family Dentistry', tags: ['UX / UI', 'Branding', 'Web Development'],
                 imgClass: 'project-card__img--1',
-                url: null,
+                url: 'https://www.jawsdentistry.co.za',
                 desc: 'A complete digital identity and app experience for a next-generation fintech startup. Designed for clarity, trust, and conversion across every touchpoint.',
                 stats: [
                     { value: '4.7★', label: 'App Store Rating' },
@@ -277,10 +164,10 @@
                     { value: '90 Days', label: 'Time to Results' }
                 ],
                 media: [
-                    { type: 'image', g: 'pmed--g1', caption: 'Brand Identity System' },
-                    { type: 'image', g: 'pmed--g3', caption: 'Typography & Colour' },
-                    { type: 'video', g: 'pmed--g5', caption: 'Onboarding Flow Demo' },
-                    { type: 'image', g: 'pmed--g4', caption: 'Mobile App UI' }
+                    { type: 'image', src: '.assets/projects/jaws/', alt: 'Brand identity', g: 'pmed--g1', caption: 'Brand Identity' },
+                    { type: 'image', src: '/assets/projects/jaws/typography-color.jpg', alt: 'Typography and color palette', g: 'pmed--g3', caption: 'Typography & Colour' },
+                    { type: 'video', src: '/assets/projects/jaws/onboarding-demo.mp4', poster: '/assets/projects/jaws/onboarding-poster.jpg', g: 'pmed--g5', caption: 'Onboarding Flow Demo' },
+                    { type: 'image', src: '/assets/projects/jaws/mobile-app-ui.jpg', alt: 'Mobile app UI screens', g: 'pmed--g4', caption: 'Mobile App UI' }
                 ],
                 challenge: 'Nova Finance entered a crowded market where trust is everything. They needed an identity system that felt credible, modern, and approachable — not like another cold fintech product.',
                 solution: 'We built a dual-brand system: a high-contrast editorial identity for marketing, and a warm, accessible design system for the app itself. Typography, colour, and motion all worked in concert.',
@@ -297,118 +184,19 @@
                     { value: '0', label: 'Crash Incidents' }
                 ],
                 media: [
-                    { type: 'image', g: 'pmed--g6', caption: 'Homepage Design' },
-                    { type: 'image', g: 'pmed--g3', caption: 'Product Detail Page' },
-                    { type: 'video', g: 'pmed--g1', caption: 'Drop Launch Experience' },
-                    { type: 'image', g: 'pmed--g8', caption: 'Mobile Checkout Flow' }
+                    { type: 'image', src: '/assets/projects/alpha/homepage-design.jpg', alt: 'Homepage design', g: 'pmed--g6', caption: 'Homepage Design' },
+                    { type: 'image', src: '/assets/projects/alpha/product-detail.jpg', alt: 'Product detail page', g: 'pmed--g3', caption: 'Product Detail Page' },
+                    { type: 'video', src: '/assets/projects/alpha/drop-experience.mp4', poster: '/assets/projects/alpha/drop-poster.jpg', g: 'pmed--g1', caption: 'Drop Launch Experience' },
+                    { type: 'image', src: '/assets/projects/alpha/mobile-checkout.jpg', alt: 'Mobile checkout flow', g: 'pmed--g8', caption: 'Mobile Checkout Flow' }
                 ],
                 challenge: 'Drop releases were crashing the site under load, and conversion was suffering badly on mobile, costing the brand thousands in lost sales per drop.',
                 solution: 'Custom Shopify 2.0 theme built with optimised asset loading, edge caching, and a queue-based drop system that gracefully handles traffic spikes.',
                 result: 'Page load time reduced to 1.1s. Mobile conversion rate up 38%. Zero site crashes during the next three drops.'
             },
-            3: {
-                num: '03', title: 'Orion Coffee', tags: ['Branding', 'Packaging'],
-                imgClass: 'project-card__img--3',
-                url: null,
-                desc: 'Brand identity, packaging system, and campaign visuals for an artisan coffee roaster aiming for national retail shelves.',
-                stats: [
-                    { value: '3', label: 'Retail Chains Won' },
-                    { value: '6 mo', label: 'Time to Retail' },
-                    { value: '5★', label: 'Press Coverage' }
-                ],
-                media: [
-                    { type: 'image', g: 'pmed--g2', caption: 'Packaging System' },
-                    { type: 'image', g: 'pmed--g7', caption: 'Brand Identity Mark' },
-                    { type: 'image', g: 'pmed--g5', caption: 'Campaign Visuals' },
-                    { type: 'image', g: 'pmed--g3', caption: 'Brew Guide Design' }
-                ],
-                challenge: 'Orion had a passionate following but no visual language strong enough to support national retail expansion. Shelf presence was invisible.',
-                solution: 'A celestial-inspired brand world — stars, constellations, and deep-space gradients — translated across bags, bands, brew guides and photographic campaigns.',
-                result: 'Secured national distribution partnerships with 3 major grocery chains within just 6 months of launch.'
-            },
-            4: {
-                num: '04', title: 'Lumina Health', tags: ['Motion', 'UX / UI'],
-                imgClass: 'project-card__img--4',
-                url: null,
-                desc: 'Motion-first health app design. Micro-animations, onboarding flows, and a design system built to scale across platforms and future features.',
-                stats: [
-                    { value: '-41%', label: 'User Anxiety' },
-                    { value: '+55%', label: 'Session Length' },
-                    { value: '100+', label: 'Motion Tokens' }
-                ],
-                media: [
-                    { type: 'video', g: 'pmed--g4', caption: 'Onboarding Animation' },
-                    { type: 'image', g: 'pmed--g1', caption: 'Dashboard UI' },
-                    { type: 'image', g: 'pmed--g3', caption: 'Design System' },
-                    { type: 'image', g: 'pmed--g5', caption: 'Motion Tokens Doc' }
-                ],
-                challenge: 'Health apps can be anxiety-inducing. Lumina needed a calm, human experience that felt supportive rather than clinical.',
-                solution: 'Motion strategy led the design process. Every transition was mapped to an emotional state, creating a UI that literally felt calmer as users navigated deeper.',
-                result: 'User-reported anxiety dropped 41% post-launch. Average session length up 55%. The motion system is now core brand IP.'
-            },
-            5: {
-                num: '05', title: 'Vertex Architecture', tags: ['Web Dev', 'Branding'],
-                imgClass: 'project-card__img--5',
-                url: 'https://vertexarchitecture.com',
-                desc: 'Full brand overhaul and a bespoke, award-worthy website for one of the most ambitious architectural practices in the region.',
-                stats: [
-                    { value: '+29%', label: 'RFP Win Rate' },
-                    { value: '2×', label: 'Organic Traffic' },
-                    { value: '4', label: 'Awards Won' }
-                ],
-                media: [
-                    { type: 'image', g: 'pmed--g3', caption: 'Homepage Design' },
-                    { type: 'image', g: 'pmed--g6', caption: 'Project Case Study' },
-                    { type: 'image', g: 'pmed--g8', caption: 'Brand Mark' },
-                    { type: 'image', g: 'pmed--g5', caption: 'Mobile Experience' }
-                ],
-                challenge: 'Vertex had an impressive portfolio hidden behind a dated website and a brand that undersold their ambition. Clients were choosing competitors on visual first impression.',
-                solution: 'A geometric identity — sharp angles, disciplined grid, restrained black-and-white — paired with a bespoke website that lets the architecture breathe at full width.',
-                result: 'RFP win rate improved by 29% in the first six months. Organic site traffic doubled. Won 4 regional web design awards.'
-            },
-            6: {
-                num: '06', title: 'Flux Motion Reel', tags: ['Motion', '3D'],
-                imgClass: 'project-card__img--6',
-                url: 'https://vimeo.com/fluxmotion',
-                desc: 'A showreel of 3D animation and micro-interaction design engineered to open boardroom doors with tier-1 product brands.',
-                stats: [
-                    { value: '2', label: 'Fortune 500 Deals' },
-                    { value: '90s', label: 'Hero Reel Length' },
-                    { value: '4K', label: 'Delivery Format' }
-                ],
-                media: [
-                    { type: 'video', g: 'pmed--g7', caption: 'Hero Showreel' },
-                    { type: 'video', g: 'pmed--g2', caption: 'Product Launch Scene' },
-                    { type: 'image', g: 'pmed--g5', caption: '3D Asset Library' },
-                    { type: 'image', g: 'pmed--g8', caption: 'Sound Design Notes' }
-                ],
-                challenge: 'Flux needed a single piece that could demonstrate their full range of 3D and motion capability in under 2 minutes — and open doors with Fortune 500 brands.',
-                solution: 'We art-directed a 90-second hero reel with custom transitions, sound design, and a 4K delivery pipeline. Every scene was built to be repurposed as a standalone asset.',
-                result: 'The reel directly led to engagement conversations with two Fortune 500 brands within 60 days of release.'
-            }
-            ,
-            7: {
-                num: '07', title: 'Zuri Studio — Agency', tags: ['UX / UI', 'Web Dev', 'Motion'],
-                imgClass: 'project-card__img--1',
-                url: null,
-                desc: 'We design and build high-performance digital experiences that combine strategy, design and technology to engage users and drive growth.',
-                stats: [
-                    { value: 'Performance-first', label: 'Optimised Builds' },
-                    { value: 'Design + Motion', label: 'Brand Systems' },
-                    { value: 'End-to-end', label: 'Delivery' }
-                ],
-                media: [
-                    { type: 'image', g: 'pmed--g1', caption: 'Zuri Studio — Work Showcase' },
-                    { type: 'image', g: 'pmed--g3', caption: 'Design System Snapshot' }
-                ],
-                challenge: 'Clients needed design systems and sites that looked premium while remaining fast and maintainable.',
-                solution: 'We combine strategic planning, modular design systems and motion-led UI to create scalable, high-performance sites.',
-                result: 'Launch-ready sites that improve user engagement and support measurable business outcomes.'
-            }
         };
 
         // Ordered list of project IDs for navigation
-        const PROJECT_IDS = [1, 2, 3, 4, 5, 6, 7];
+        const PROJECT_IDS = [1, 2];
 
         // ─── Modal Controller ────────────────────────────────────
         document.addEventListener('DOMContentLoaded', function initModal() {
@@ -436,9 +224,15 @@
                 const next = document.getElementById('pmed-lb-next');
                 med.className = 'pmed-lb__media ' + m.g;
                 med.dataset.type = m.type;
-                med.innerHTML = m.type === 'video'
-                    ? `<span class="pmed-lb__play"><svg viewBox="0 0 24 24" fill="currentColor" width="52" height="52"><path d="M8 5v14l11-7z"/></svg></span><p class="pmed-lb__vid-note">Video available on the live site</p>`
-                    : '';
+
+                if (m.type === 'image' && m.src) {
+                    med.innerHTML = `<img src="${m.src}" alt="${m.alt || m.caption}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`;
+                } else if (m.type === 'video') {
+                    med.innerHTML = `<span class="pmed-lb__play"><svg viewBox="0 0 24 24" fill="currentColor" width="52" height="52"><path d="M8 5v14l11-7z"/></svg></span><p class="pmed-lb__vid-note">Video available on the live site</p>`;
+                } else {
+                    med.innerHTML = '';
+                }
+
                 cap.textContent = m.caption;
                 ctr.textContent = `${lbCurrent + 1} / ${lbMedia.length}`;
                 prev.disabled = lbCurrent === 0;
@@ -501,15 +295,21 @@
                 const galleryWrap = document.getElementById('pmodal-gallery-wrap');
                 const galleryEl = document.getElementById('pmodal-gallery');
                 if (galleryEl && d.media && d.media.length) {
-                    galleryEl.innerHTML = d.media.map((m, i) => `
+                    galleryEl.innerHTML = d.media.map((m, i) => {
+                        const thumbHTML = m.type === 'image' && m.src
+                            ? `<img src="${m.src}" alt="${m.alt || m.caption}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`
+                            : `<div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(140,140,150,0.1), rgba(160,160,160,0.08)); display: flex; align-items: center; justify-content: center;">${m.type === 'video' ? '<span style="font-size: 24px; opacity: 0.6;">▶</span>' : ''}</div>`;
+                        return `
                         <button class="pmed__item" data-mi="${i}" aria-label="${m.caption}">
                             <div class="pmed__thumb ${m.g}">
+                                ${thumbHTML}
                                 ${m.type === 'video'
-                            ? `<span class="pmed__play-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M8 5v14l11-7z"/></svg></span>`
-                            : ''}
+                                ? `<span class="pmed__play-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M8 5v14l11-7z"/></svg></span>`
+                                : ''}
                             </div>
                             <span class="pmed__cap">${m.caption}</span>
-                        </button>`).join('');
+                        </button>`;
+                    }).join('');
                     galleryEl.querySelectorAll('.pmed__item').forEach(btn =>
                         btn.addEventListener('click', () => openLightbox(d.media, +btn.dataset.mi))
                     );
@@ -646,7 +446,7 @@
                 pmedMediaEl.addEventListener('click', () => {
                     try {
                         if (pmedMediaEl.dataset.type === 'image' && document.fullscreenEnabled) {
-                            pmedMediaEl.requestFullscreen().catch(() => {});
+                            pmedMediaEl.requestFullscreen().catch(() => { });
                         }
                     } catch (e) { /* ignore */ }
                 });
@@ -835,6 +635,10 @@
             </svg>
         </button>
     </div><!-- /.pmed-lightbox -->
+
+<a class="whatsapp" href="https://wa.me.">
+    <img src="./assets/images/zuri/whatsapp13.svg" class="whatsapp social-icon" alt="Whatsapp">
+</a>
 
 </body>
 

@@ -7,6 +7,7 @@
   <meta name="description"
     content="Zuri Studio is a modern web design agency crafting high-performance, visually striking digital experiences." />
   <title>Zuri Studio — Digital Experiences That Perform</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/zuri/Letterface Logo.svg">
 
   <!-- Fonts -->
   <link
@@ -36,8 +37,11 @@
   <div class="grain"></div>
 
   <header class="navbar">
-    <a href="index.html" class="logo">Zuri Studio</a>
-    <nav class="nav-links">
+  <a href="index.html" class="logo">
+    <img src="./assets/images/zuri/LetterfaceLogo.svg" class="zuri-logo-nav">
+    <img src="./assets/images/zuri/TextLogo.svg" class="zuri-logo-nav">
+  </a>
+  <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="projects.html">Work</a>
       <a href="start-project.html" class="cta">Start a Project</a>
@@ -85,7 +89,7 @@
       </div>
       <div class="service-card reveal">
         <span class="service-number">05</span>
-        <h3>Graphics & Branding</h3>
+        <h3>Graphic Design & Branding</h3>
         <p>Striking visual identities and digital assets that capture attention, communicate your values, and differentiate you from the competition.</p>
       </div>
       <div class="service-card reveal">
@@ -103,7 +107,7 @@
     <div class="work-grid">
       <div class="work-card reveal">
         <div class="img-wrapper">
-          <img src="assets/images/projects/JawsFD_1.png" alt="Jaws Family Dentistry — Dental practice online presence" loading="lazy">
+          <img src="./assets/projects/jaws/Word_Logo.jpeg" alt="Jaws Family Dentistry — Dental practice online presence" loading="lazy">
         </div>
         <div class="work-info">
           <h3>Jaws Family Dentistry</h3>
@@ -112,7 +116,7 @@
       </div>
       <div class="work-card reveal">
         <div class="img-wrapper">
-          <img src="assets/images/projects/Littlefootprints_1.jpg" alt="Little FootPrints Playschool & Aftercare - Board Design" loading="lazy">
+          <img src="./assets/projects/little-footprints/Littlefootprints_1.jpg" alt="Little FootPrints Playschool & Aftercare - Board Design" loading="lazy">
         </div>
         <div class="work-info">
           <h3>Little FootPrints Playschool & Aftercare Board Design</h3>
@@ -175,7 +179,15 @@
     </div>
   </section>
 
-  <footer style="padding:12px 0; font-size:14px;">
+ 
+  
+  <a class="whatsapp" href="https://wa.me.">
+    <img src="./assets/images/zuri/whatsapp13.svg" class="whatsapp social-icon" alt="Whatsapp">
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+ <footer style="padding:12px 0; font-size:14px;">
     <div class="footer-wordmark">Zuri Studio</div>
     <div class="footer-bottom" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
       <p style="margin:0;">&copy; 2026 Zuri Studio. All rights reserved.</p>
@@ -187,8 +199,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="js/main.js"></script>
-</body>
 
 </html>
