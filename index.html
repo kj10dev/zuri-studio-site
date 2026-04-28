@@ -7,6 +7,7 @@
   <meta name="description"
     content="Zuri Studio is a modern web design agency crafting high-performance, visually striking digital experiences." />
   <title>Zuri Studio — Digital Experiences That Perform</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/zuri/Letterface Logo.svg">
 
   <!-- Fonts -->
   <link
@@ -36,8 +37,10 @@
   <div class="grain"></div>
 
   <header class="navbar">
-    <a href="index.html" class="logo">Zuri Studio</a>
-    <nav class="nav-links">
+  <a href="index.html" class="logo">
+    <img src="./assets/images/zuri/TextLogo.svg" class="zuri-logo-nav" alt="Zuri Studio logo">
+  </a>
+  <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="projects.html">Work</a>
       <a href="start-project.html" class="cta">Start a Project</a>
@@ -58,30 +61,40 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
+<!-- SERVICES -->
   <section id="services" class="section">
     <span class="section-label">What We Do</span>
     <h2>Services</h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <span class="service-number">01</span>
-        <h3>Branding</h3>
-        <p>Identity systems that differentiate and endure in a crowded market.</p>
+        <h3>Web Design & Development</h3>
+        <p>Custom websites built with cutting-edge technology—responsive, fast, and engineered to convert visitors into customers.</p>
       </div>
       <div class="service-card reveal">
         <span class="service-number">02</span>
         <h3>UX/UI Design</h3>
-        <p>Beautiful, intuitive digital experiences that delight users.</p>
+        <p>Intuitive interfaces designed with Figma and various AI tools that blend beautiful aesthetics with seamless user experiences across every touchpoint.</p>
       </div>
       <div class="service-card reveal">
         <span class="service-number">03</span>
-        <h3>Web Development</h3>
-        <p>Fast, scalable, modern websites engineered for growth.</p>
+        <h3>App Development</h3>
+        <p>Native and cross-platform mobile applications built with Kotlin and Python—scalable solutions that users love to engage with.</p>
       </div>
       <div class="service-card reveal">
         <span class="service-number">04</span>
-        <h3>SEO</h3>
-        <p>Visibility strategies that drive measurable, lasting results.</p>
+        <h3>3D Design & Animation</h3>
+        <p>Immersive 3D experiences and micro-animations powered by Three.js and GSAP that bring your digital products to life with motion and depth.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-number">05</span>
+        <h3>Graphic Design & Branding</h3>
+        <p>Striking visual identities and digital assets that capture attention, communicate your values, and differentiate you from the competition.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-number">06</span>
+        <h3>Hosting, SEO & Marketing</h3>
+        <p>Reliable web hosting paired with data-driven marketing strategies—ensuring your digital presence is fast, secure, and discoverable.</p>
       </div>
     </div>
   </section>
@@ -91,24 +104,27 @@
     <span class="section-label">Portfolio</span>
     <h2>Featured Work</h2>
     <div class="work-grid">
-      <div class="work-card reveal">
+      <a href="projects.html#project-1" class="work-card reveal">
         <div class="img-wrapper">
-          <img src="assets/images/project1.jpg" alt="Nova Finance — Fintech UX Design project" loading="lazy">
+          <img src="./assets/projects/jaws/Word_Logo.jpeg" alt="Jaws Family Dentistry — Dental practice online presence" loading="lazy">
         </div>
         <div class="work-info">
-          <h3>Nova Finance</h3>
-          <p>Fintech / UX Design</p>
+          <h3>Jaws Family Dentistry</h3>
+          <p>Health care - UI/UX Design | Web Development</p>
         </div>
-      </div>
-      <div class="work-card reveal">
+      </a>
+      <a href="projects.html#project-2" class="work-card reveal">
         <div class="img-wrapper">
-          <img src="assets/images/project2.jpg" alt="Alpha Apparel — E-commerce Development project" loading="lazy">
+          <img src="./assets/projects/little-footprints/Littlefootprints_1.jpg" alt="Little FootPrints Playschool & Aftercare - Board Design" loading="lazy">
         </div>
         <div class="work-info">
-          <h3>Alpha Apparel</h3>
-          <p>E-commerce / Dev</p>
+          <h3>Little FootPrints Playschool & Aftercare Board Design</h3>
+          <p>Education - Graphic Design</p>
         </div>
-      </div>
+      </a>
+    </div>
+    <div class="work-cta" style="margin-top:24px; text-align:center;">
+      <a href="projects.html" class="btn-outline">View Our Work</a>
     </div>
   </section>
 
@@ -122,17 +138,18 @@
     </p>
     <div class="stats-row reveal">
       <div class="stat">
-        <h4>50+</h4>
+        <h4>2026</h4>
+        <p>Founded</p>
+      </div>
+      <div class="stat">
+        <h4>5+</h4>
         <p>Projects Delivered</p>
       </div>
       <div class="stat">
-        <h4>12</h4>
+        <h4>3</h4>
         <p>Industries Served</p>
       </div>
-      <div class="stat">
-        <h4>98%</h4>
-        <p>Client Satisfaction</p>
-      </div>
+    
     </div>
   </section>
 
@@ -149,17 +166,30 @@
           <a href="start-project.html" class="btn-primary">Start Your Project →</a>
         </div>
       </div>
-      <form class="contact-form" id="contact-form">
+      <div class="contact-form-wrap">
+        <h4 style="margin-top:0; margin-bottom:12px; font-weight:600;">General Enquries</h4>
+        <form class="contact-form" id="contact-form">
         <input type="text" id="name" placeholder="Your Name" required />
         <input type="email" id="email" placeholder="Email Address" required />
         <textarea id="message" placeholder="Tell us about your project" required></textarea>
         <button type="submit" class="btn-primary">Send Message</button>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
+ 
+  
+  <a class="whatsapp" href="https://wa.me.">
+    <img src="./assets/images/zuri/whatsapp13.svg" class="whatsapp social-icon" alt="Whatsapp">
+  </a>
+
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-wordmark">Zuri Studio</div>
+    <div class="footer-wordmark">
+      <img src="./assets/images/zuri/Zuri_Studio_Logo.svg" class="zuri-logo-footer" alt="Zuri Studio logo">
+      <span class="footer-text">Zuri Studio</span>
+    </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Zuri Studio. All rights reserved.</p>
       <div class="footer-links">
