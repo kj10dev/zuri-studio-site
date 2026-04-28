@@ -38,8 +38,7 @@
 
   <header class="navbar">
   <a href="index.html" class="logo">
-    <img src="./assets/images/zuri/LetterfaceLogo.svg" class="zuri-logo-nav">
-    <img src="./assets/images/zuri/TextLogo.svg" class="zuri-logo-nav">
+    <img src="./assets/images/zuri/TextLogo.svg" class="zuri-logo-nav" alt="Zuri Studio logo">
   </a>
   <nav class="nav-links">
       <a href="index.html">Home</a>
@@ -75,7 +74,7 @@
       <div class="service-card reveal">
         <span class="service-number">02</span>
         <h3>UX/UI Design</h3>
-        <p>Intuitive interfaces designed in Figma that blend beautiful aesthetics with seamless user experiences across every touchpoint.</p>
+        <p>Intuitive interfaces designed with Figma and various AI tools that blend beautiful aesthetics with seamless user experiences across every touchpoint.</p>
       </div>
       <div class="service-card reveal">
         <span class="service-number">03</span>
@@ -94,7 +93,7 @@
       </div>
       <div class="service-card reveal">
         <span class="service-number">06</span>
-        <h3>Hosting & Marketing</h3>
+        <h3>Hosting, SEO & Marketing</h3>
         <p>Reliable web hosting paired with data-driven marketing strategies—ensuring your digital presence is fast, secure, and discoverable.</p>
       </div>
     </div>
@@ -105,7 +104,7 @@
     <span class="section-label">Portfolio</span>
     <h2>Featured Work</h2>
     <div class="work-grid">
-      <div class="work-card reveal">
+      <a href="projects.html#project-1" class="work-card reveal">
         <div class="img-wrapper">
           <img src="./assets/projects/jaws/Word_Logo.jpeg" alt="Jaws Family Dentistry — Dental practice online presence" loading="lazy">
         </div>
@@ -113,8 +112,8 @@
           <h3>Jaws Family Dentistry</h3>
           <p>Health care - UI/UX Design | Web Development</p>
         </div>
-      </div>
-      <div class="work-card reveal">
+      </a>
+      <a href="projects.html#project-2" class="work-card reveal">
         <div class="img-wrapper">
           <img src="./assets/projects/little-footprints/Littlefootprints_1.jpg" alt="Little FootPrints Playschool & Aftercare - Board Design" loading="lazy">
         </div>
@@ -122,7 +121,7 @@
           <h3>Little FootPrints Playschool & Aftercare Board Design</h3>
           <p>Education - Graphic Design</p>
         </div>
-      </div>
+      </a>
     </div>
     <div class="work-cta" style="margin-top:24px; text-align:center;">
       <a href="projects.html" class="btn-outline">View Our Work</a>
@@ -185,13 +184,15 @@
     <img src="./assets/images/zuri/whatsapp13.svg" class="whatsapp social-icon" alt="Whatsapp">
   </a>
 
-  <script src="js/main.js"></script>
-</body>
- <footer style="padding:12px 0; font-size:14px;">
-    <div class="footer-wordmark">Zuri Studio</div>
-    <div class="footer-bottom" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-      <p style="margin:0;">&copy; 2026 Zuri Studio. All rights reserved.</p>
-      <div class="footer-links" style="font-size:13px;">
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">
+      <img src="./assets/images/zuri/Zuri_Studio_Logo.svg" class="zuri-logo-footer" alt="Zuri Studio logo">
+      <span class="footer-text">Zuri Studio</span>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Zuri Studio. All rights reserved.</p>
+      <div class="footer-links">
         <a href="#">Twitter</a>
         <a href="#">Instagram</a>
         <a href="#">LinkedIn</a>
@@ -199,5 +200,8 @@
       </div>
     </div>
   </footer>
+
+  <script src="js/main.js"></script>
+</body>
 
 </html>
