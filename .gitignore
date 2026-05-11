@@ -1,0 +1,52 @@
+# ─── macOS ──────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# ─── Editors & IDEs ─────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# ─── Node (if ever introduced) ──────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+package-lock.json
+
+# ─── Build / dist outputs ───────────────────────────
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# ─── Environment / secrets ──────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Logs ───────────────────────────────────────────
+*.log
+logs/
+
+# ─── Temporary / scratch ────────────────────────────
+*.tmp
+*.bak
+*.swp
+*~
+
+# ─── Project-specific ───────────────────────────────
+# Large unoptimised source assets — commit only
+# web-ready compressed versions
+assets/raw/
+assets/source/
