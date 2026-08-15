@@ -151,10 +151,10 @@
                     { value: '90 Days', label: 'Time to Results' }
                 ],
                 media: [
-                    { type: 'image', src: '.assets/projects/jaws/', alt: 'Brand identity', g: 'pmed--g1', caption: 'Brand Identity' },
-                    { type: 'image', src: '/assets/projects/jaws/typography-color.jpg', alt: 'Typography and color palette', g: 'pmed--g3', caption: 'Typography & Colour' },
-                    { type: 'video', src: '/assets/projects/jaws/onboarding-demo.mp4', poster: '/assets/projects/jaws/onboarding-poster.jpg', g: 'pmed--g5', caption: 'Onboarding Flow Demo' },
-                    { type: 'image', src: '/assets/projects/jaws/mobile-app-ui.jpg', alt: 'Mobile app UI screens', g: 'pmed--g4', caption: 'Mobile App UI' }
+                    { type: 'image', src: 'assets/projects/jaws/brand-identity.jpg', alt: 'Brand identity system for Jaws Family Dentistry', g: 'pmed--g1', caption: 'Brand Identity' },
+                    { type: 'image', src: 'assets/projects/jaws/typography-color.jpg', alt: 'Typography and color palette', g: 'pmed--g3', caption: 'Typography & Colour' },
+                    { type: 'video', src: 'assets/projects/jaws/onboarding-demo.mp4', poster: 'assets/projects/jaws/onboarding-poster.jpg', g: 'pmed--g5', caption: 'Onboarding Flow Demo' },
+                    { type: 'image', src: 'assets/projects/jaws/mobile-app-ui.jpg', alt: 'Mobile app UI screens', g: 'pmed--g4', caption: 'Mobile App UI' }
                 ],
                 challenge: 'Nova Finance entered a crowded market where trust is everything. They needed an identity system that felt credible, modern, and approachable — not like another cold fintech product.',
                 solution: 'We built a dual-brand system: a high-contrast editorial identity for marketing, and a warm, accessible design system for the app itself. Typography, colour, and motion all worked in concert.',
@@ -163,7 +163,7 @@
             2: {
                 num: '02', title: 'Alpha Apparel', tags: ['Web Dev', 'E-Commerce'],
                 imgClass: 'project-card__img--2',
-                url: 'https://alphaapparel.co',
+                url: '',
                 desc: 'High-performance Shopify storefront engineered for a premium streetwear label known for hyped limited-edition drops.',
                 stats: [
                     { value: '1.1s', label: 'Page Load Time' },
@@ -171,10 +171,10 @@
                     { value: '0', label: 'Crash Incidents' }
                 ],
                 media: [
-                    { type: 'image', src: '/assets/projects/alpha/homepage-design.jpg', alt: 'Homepage design', g: 'pmed--g6', caption: 'Homepage Design' },
-                    { type: 'image', src: '/assets/projects/alpha/product-detail.jpg', alt: 'Product detail page', g: 'pmed--g3', caption: 'Product Detail Page' },
-                    { type: 'video', src: '/assets/projects/alpha/drop-experience.mp4', poster: '/assets/projects/alpha/drop-poster.jpg', g: 'pmed--g1', caption: 'Drop Launch Experience' },
-                    { type: 'image', src: '/assets/projects/alpha/mobile-checkout.jpg', alt: 'Mobile checkout flow', g: 'pmed--g8', caption: 'Mobile Checkout Flow' }
+                    { type: 'image', src: 'assets/projects/alpha/homepage-design.jpg', alt: 'Homepage design for Alpha Apparel', g: 'pmed--g6', caption: 'Homepage Design' },
+                    { type: 'image', src: 'assets/projects/alpha/product-detail.jpg', alt: 'Product detail page', g: 'pmed--g3', caption: 'Product Detail Page' },
+                    { type: 'video', src: 'assets/projects/alpha/drop-experience.mp4', poster: 'assets/projects/alpha/drop-poster.jpg', g: 'pmed--g1', caption: 'Drop Launch Experience' },
+                    { type: 'image', src: 'assets/projects/alpha/mobile-checkout.jpg', alt: 'Mobile checkout flow', g: 'pmed--g8', caption: 'Mobile Checkout Flow' }
                 ],
                 challenge: 'Drop releases were crashing the site under load, and conversion was suffering badly on mobile, costing the brand thousands in lost sales per drop.',
                 solution: 'Custom Shopify 2.0 theme built with optimised asset loading, edge caching, and a queue-based drop system that gracefully handles traffic spikes.',
@@ -450,14 +450,25 @@
                 });
             }
 
-            // Auto-open modal if URL hash includes an open request, e.g. #open-7 or #project-7
-            const hashMatch = location.hash.match(/#(?:open-|project-)(\d+)/);
-            if (hashMatch) {
-                const idFromHash = parseInt(hashMatch[1], 10);
-                if (!isNaN(idFromHash) && PROJECT_IDS.includes(idFromHash)) {
-                    // small delay to ensure modal elements are initialized
-                    setTimeout(() => open(idFromHash), 120);
+            function getRequestedProjectId() {
+                const hashMatch = location.hash.match(/#(?:open-|project-)(\d+)/);
+                if (hashMatch) {
+                    const parsed = parseInt(hashMatch[1], 10);
+                    if (!isNaN(parsed)) return parsed;
                 }
+
+                const queryMatch = new URLSearchParams(location.search);
+                const projectParam = queryMatch.get('project');
+                if (!projectParam) return null;
+
+                const parsed = parseInt(projectParam, 10);
+                return Number.isNaN(parsed) ? null : parsed;
+            }
+
+            // Auto-open modal if URL contains a project request, e.g. #project-2 or ?project=2
+            const requestedProjectId = getRequestedProjectId();
+            if (requestedProjectId && PROJECT_IDS.includes(requestedProjectId)) {
+                setTimeout(() => open(requestedProjectId), 120);
             }
 
             modal.addEventListener('keydown', e => {
@@ -604,29 +615,40 @@
         </div><!-- /.pmodal__dialog -->
     </div><!-- /.pmodal -->
 
+    <a class="whatsapp" href="https://wa.me.">
+        <img src="./assets/images/zuri/whatsapp13.svg" class="whatsapp social-icon" alt="Whatsapp">
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-wordmark">
+            <img src="./assets/images/zuri/Zuri_Studio_Logo.svg" class="zuri-logo-footer" alt="Zuri Studio logo">
+            <span class="footer-text">Zuri Studio</span>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zuri Studio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Instagram</a>
+                <a href="#">Behance</a>
+                <a href="#">Dribbble</a>
+            </div>
+        </div>
+    </footer>
+
     <!-- ── Project Media Lightbox ──────────────────────────── -->
-     <!-- /.pmed-lightbox -->
-
-<a class="whatsapp" href="https://wa.me.">
-    <img src="./assets/images/zuri/whatsapp13.svg" class="whatsapp social-icon" alt="Whatsapp">
-</a>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-wordmark">
-    <img src="./assets/images/zuri/Zuri_Studio_Logo.svg" class="zuri-logo-footer" alt="Zuri Studio logo">
-    <span class="footer-text">Zuri Studio</span>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Zuri Studio. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Dribbble</a>
+    <div class="pmodal-lightbox" id="pmodal-lightbox" aria-hidden="true">
+        <div class="pmed-lb__backdrop" id="pmed-lb-bg"></div>
+        <div class="pmed-lb__dialog" role="dialog" aria-modal="true" aria-label="Project media viewer">
+            <button class="pmed-lb__close" id="pmed-lb-close" aria-label="Close media viewer">×</button>
+            <div class="pmed-lb__media" id="pmed-lb-media"></div>
+            <div class="pmed-lb__meta">
+                <div class="pmed-lb__caption" id="pmed-lb-caption"></div>
+                <div class="pmed-lb__counter" id="pmed-lb-counter"></div>
+            </div>
+            <button class="pmed-lb__nav pmed-lb__nav--prev" id="pmed-lb-prev" aria-label="Previous media">←</button>
+            <button class="pmed-lb__nav pmed-lb__nav--next" id="pmed-lb-next" aria-label="Next media">→</button>
+        </div>
     </div>
-  </div>
-</footer>
 
 </body>
 

@@ -1,105 +1,54 @@
 # Media Setup Guide
 
-## Implementation Complete ✓
+## Current Implementation ✓
 
-The project now uses **background images + `<img>` elements** with gradient fallbacks. 
+The project modal now renders its media from the `media` arrays inside the project data object in [projects.html](projects.html). Each item uses either an image path or a video path and falls back to the gradient class defined in the modal thumbnail.
 
-### Directory Structure
+### Expected Asset Paths
 
 ```
 assets/
 ├── projects/
-│   ├── jaws/                           # Jaws Family Dentistry project
-│   │   ├── brand-identity.jpg         # Required: Brand Identity System
-│   │   ├── typography-color.jpg       # Required: Typography & Colour
-│   │   ├── onboarding-demo.mp4        # Required: Onboarding Flow Demo (video)
-│   │   ├── onboarding-poster.jpg      # Required: Poster for onboarding video
-│   │   └── mobile-app-ui.jpg          # Required: Mobile App UI
-│   │
-│   └── alpha/                          # Alpha Apparel project
-│       ├── homepage-design.jpg         # Required: Homepage Design
-│       ├── product-detail.jpg          # Required: Product Detail Page
-│       ├── drop-experience.mp4         # Required: Drop Launch Experience (video)
-│       ├── drop-poster.jpg             # Required: Poster for drop video
-│       └── mobile-checkout.jpg         # Required: Mobile Checkout Flow
+│   ├── jaws/
+│   │   ├── brand-identity.jpg
+│   │   ├── typography-color.jpg
+│   │   ├── onboarding-demo.mp4
+│   │   ├── onboarding-poster.jpg
+│   │   └── mobile-app-ui.jpg
+│   └── alpha/
+│       ├── homepage-design.jpg
+│       ├── product-detail.jpg
+│       ├── drop-experience.mp4
+│       ├── drop-poster.jpg
+│       └── mobile-checkout.jpg
 ```
 
-### What Was Changed
+### What the Modal Uses
 
-1. **Data Structure** (`projects.html`):
-   - Added `src` property: Path to actual image/video file
-   - Added `alt` property: Accessibility text for images
-   - Added `poster` property: Thumbnail for video elements
-   - Kept `g` property: Gradient class as elegant fallback
+1. The hero image for each project is driven by `imgClass` and the shared `.pmodal__img` styling.
+2. The gallery thumbnails are generated from the `media` entries in `PROJECTS_DATA`.
+3. Images render as `<img>` tags inside the gallery items.
+4. Videos render with a play icon and a lightweight fallback message in the lightbox.
 
-2. **Rendering Logic** (`projects.html`):
-   - **Thumbnails**: Renders `<img>` elements inside `.pmed__thumb`
-   - **Lightbox**: Displays actual images with `object-fit: cover`
-   - **Videos**: Shows play icon overlay + fallback message
+### Important Notes
 
-3. **Styling** (`css/projects.css`):
-   - Images layer on top of gradient backgrounds
-   - `background-blend-mode: overlay` creates subtle blending
-   - Proper z-index stacking ensures play icons appear on top
-
-### How It Works
-
-**Fallback Chain:**
-1. **If image loads**: Displays image with gradient as subtle overlay
-2. **If image fails**: Shows gradient color swatch
-3. **If video**: Shows play icon overlay on gradient/image
-
-### Image Specifications
-
-**Recommended Format:**
-- **Images**: `.jpg` (for photos) or `.png` (for graphics)
-- **Videos**: `.mp4` (H.264 codec for broad compatibility)
-- **Posters**: `.jpg` 16:10 aspect ratio
-
-**Size Guidelines:**
-- **Thumbnails**: 160x110px (will scale up to fit container)
-- **Lightbox**: ~880x550px (16:10 aspect ratio)
-- **File Size**: Keep under 500KB per image for performance
+- Paths in [projects.html](projects.html) should be relative to the site root, such as `assets/projects/jaws/brand-identity.jpg`.
+- The modal uses the `caption`, `alt`, and `g` properties to create the gallery item and lightbox content.
+- If a local image is missing, the gradient background still remains visible as a fallback.
+- The visit link in the modal footer is controlled by the `url` field in each project object.
 
 ### Quick Setup
 
-1. Add images to the respective directories:
-   ```
-   assets/projects/jaws/brand-identity.jpg
-   assets/projects/jaws/typography-color.jpg
-   assets/projects/alpha/homepage-design.jpg
-   ... etc
-   ```
+1. Place the required files in the directories above.
+2. Ensure the `src` values in [projects.html](projects.html) match the actual filenames.
+3. Open [projects.html](projects.html), click a project card, and verify:
+   - the gallery shows thumbnails,
+   - clicking a thumbnail opens the lightbox,
+   - the footer link appears when a valid `url` is present.
 
-2. For videos, add:
-   ```
-   assets/projects/jaws/onboarding-demo.mp4
-   assets/projects/jaws/onboarding-poster.jpg
-   assets/projects/alpha/drop-experience.mp4
-   assets/projects/alpha/drop-poster.jpg
-   ```
+### Recommended Asset Specs
 
-3. Test locally:
-   - Open `projects.html` in browser
-   - Click project card to open modal
-   - Verify images load in gallery thumbnails
-   - Click thumbnail to open lightbox
-   - Video placeholders will show with play icon
-
-### Notes
-
-- Gradients (`.pmed--g1`, `.pmed--g2`, etc.) remain as sophisticated fallbacks
-- If an image fails to load, the gradient automatically displays
-- Videos show a "Video available on the live site" note in the lightbox
-- All alt text is properly set for accessibility
-
-### Browser Support
-
-- ✅ Modern browsers (Chrome, Firefox, Safari, Edge)
-- ✅ Responsive images with `object-fit: cover`
-- ✅ Graceful degradation with CSS gradients
-- ✅ Touch-friendly interactions
-
----
-
-**To add more projects:** Simply extend `PROJECTS_DATA` object with new entries and create corresponding asset directories.
+- Images: `.jpg` or `.png`
+- Videos: `.mp4`
+- Posters: `.jpg` or `.png` with a landscape aspect ratio
+- Keep file sizes reasonable for web delivery

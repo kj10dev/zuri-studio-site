@@ -545,6 +545,133 @@
     }
 }
 
+/* ── Project media lightbox ── */
+.pmodal-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 700;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.pmodal-lightbox.is-open {
+    display: flex;
+}
+
+.pmed-lb__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 5, 0.76);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+}
+
+.pmed-lb__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(900px, 100%);
+    background: #111110;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(250, 245, 235, 0.08);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.65);
+}
+
+.pmed-lb__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(250, 245, 235, 0.18);
+    border-radius: 50%;
+    background: rgba(17, 17, 16, 0.6);
+    color: var(--text-light);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.pmed-lb__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pmed-lb__media img,
+.pmed-lb__media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pmed-lb__play {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--text-light);
+}
+
+.pmed-lb__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px 12px;
+    background: rgba(17, 17, 16, 0.96);
+}
+
+.pmed-lb__caption {
+    color: var(--text-light);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.pmed-lb__counter {
+    color: rgba(250, 245, 235, 0.5);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.pmed-lb__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(250, 245, 235, 0.18);
+    background: rgba(17, 17, 16, 0.72);
+    color: var(--text-light);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.pmed-lb__nav--prev {
+    left: 18px;
+}
+
+.pmed-lb__nav--next {
+    right: 18px;
+}
+
 
 /* ═══════════════════════════════════════════════════
    PROJECT DETAIL MODAL — v2 (Centered Overlay)
@@ -965,6 +1092,44 @@
     font-variant-numeric: tabular-nums;
     min-width: 34px;
     text-align: center;
+}
+
+/* ── Visit site link ── */
+.pmodal__footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pmodal__site-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid rgba(250, 245, 235, 0.16);
+    border-radius: 999px;
+    background: rgba(250, 245, 235, 0.04);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.pmodal__site-link:hover {
+    background: rgba(232, 93, 38, 0.14);
+    border-color: rgba(232, 93, 38, 0.4);
+    transform: translateY(-1px);
+}
+
+.pmodal__site-link svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 /* ── Responsive ── */

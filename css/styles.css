@@ -3,19 +3,59 @@
    Inspired by Pentagram & Analogue Agency
    ═══════════════════════════════════════════════════ */
 
-/* ─── Palette ─── */
+/* ─── Design Tokens ─── */
 :root {
-  --bg: #FAF5EB;
-  --bg-dark: #111110;
-  --bg-dark-2: #1a1a18;
-  --accent: #E85D26;
-  --accent-hover: #d14e1e;
-  --accent-alt: #2B7A3D;
-  --text: #111110;
-  --text-light: #FAF5EB;
-  --muted: #7a7868;
-  --border: rgba(17, 17, 16, 0.08);
+  /* Color tokens */
+  --color-bg: #FAF5EB;
+  --color-surface: #FFFDF9;
+  --color-bg-dark: #111110;
+  --color-bg-dark-2: #1a1a18;
+  --color-accent: #E85D26;
+  --color-accent-hover: #d14e1e;
+  --color-accent-alt: #2B7A3D;
+  --color-text: #111110;
+  --color-text-inverse: #FAF5EB;
+  --color-text-muted: #7a7868;
+  --color-border: rgba(17, 17, 16, 0.08);
+  --color-border-strong: rgba(17, 17, 16, 0.16);
+  --color-shadow: rgba(17, 17, 16, 0.08);
+
+  /* Legacy aliases */
+  --bg: var(--color-bg);
+  --bg-dark: var(--color-bg-dark);
+  --bg-dark-2: var(--color-bg-dark-2);
+  --accent: var(--color-accent);
+  --accent-hover: var(--color-accent-hover);
+  --accent-alt: var(--color-accent-alt);
+  --text: var(--color-text);
+  --text-light: var(--color-text-inverse);
+  --muted: var(--color-text-muted);
+  --border: var(--color-border);
   --border-light: rgba(53, 37, 5, 0.1);
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-size-label: 0.75rem;
+  --font-size-body: clamp(0.95rem, 1.2vw, 1.1rem);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 5rem;
+  --space-10: 6rem;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.25rem;
+  --radius-pill: 999px;
 
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -23,6 +63,13 @@
   --duration-fast: 0.3s;
   --duration-med: 0.6s;
   --duration-slow: 1.2s;
+  --transition-fast: 0.3s;
+  --transition-med: 0.6s;
+  --transition-slow: 1.2s;
+
+  /* Shadow */
+  --shadow-sm: 0 10px 30px rgba(17, 17, 16, 0.06);
+  --shadow-md: 0 20px 60px rgba(17, 17, 16, 0.12);
 }
 
 /* ─── Reset ─── */
@@ -32,6 +79,164 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* ─── Design System Utilities ─── */
+.ds-page {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.ds-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5% 5rem;
+}
+
+.ds-hero {
+  padding: 8rem 0 4rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ds-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ds-stack--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ds-grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.ds-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ds-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ds-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+}
+
+.ds-card--dark {
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+}
+
+.ds-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: rgba(232, 93, 38, 0.12);
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ds-label {
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.ds-type-sample {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ds-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ds-swatch__color {
+  height: 4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(17, 17, 16, 0.08);
+}
+
+.ds-swatch__meta {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.ds-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.color-hover-widget {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12000;
+  pointer-events: none;
+  min-width: 220px;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-lg);
+  background: rgba(17, 17, 16, 0.95);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(250, 245, 235, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.color-hover-widget__label {
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(250, 245, 235, 0.7);
+  margin-bottom: 0.6rem;
+}
+
+.color-hover-widget__swatch {
+  height: 2.6rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(250, 245, 235, 0.18);
+  margin-bottom: 0.6rem;
+  background: var(--color-bg);
+}
+
+.color-hover-widget__value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.color-hover-widget__hint {
+  font-size: 0.74rem;
+  color: rgba(250, 245, 235, 0.6);
 }
 
 html {
@@ -186,7 +391,7 @@ p {
 
 /* ─── Layout ─── */
 .section {
-  padding: 140px 10%;
+  padding: 60px 10%;
   position: relative;
 }
 
@@ -272,7 +477,12 @@ p {
   width: auto;
   max-width: 140px;
   display: block;
-  transition: opacity var(--duration-fast);
+  transition: opacity var(--duration-fast), transform 0.28s ease;
+}
+
+.logo:hover .zuri-logo-nav,
+.zuri-logo-nav:hover {
+  transform: scale(1.08);
 }
 
 .navbar.scrolled .zuri-logo-nav {
@@ -742,7 +952,7 @@ canvas#bg {
 /* ─── Footer ─── */
 footer {
   background: var(--bg-dark);
-  padding: 100px 10% 50px;
+  padding: 60px 10% 50px;
   color: var(--text-light);
   overflow: hidden;
 }
@@ -760,11 +970,12 @@ footer {
   max-width: 200px;
   display: block;
   filter: brightness(0.8);
-  transition: filter var(--duration-fast);
+  transition: filter var(--duration-fast), transform 0.28s ease;
 }
 
 .zuri-logo-footer:hover {
   filter: brightness(1);
+  transform: scale(1.08);
 }
 
 .footer-text {
