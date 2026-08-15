@@ -380,7 +380,7 @@ if (form) {
       if (!feedback) {
         feedback = document.createElement('div');
         feedback.className = 'form-feedback';
-        feedback.textContent = "Thanks! We'll get back to you within 24 hours.";
+        feedback.textContent = "Thanks! We'll get back to you within 48 hours.";
         form.appendChild(feedback);
       }
       feedback.classList.add('show');
