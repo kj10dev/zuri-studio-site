@@ -534,6 +534,25 @@
     line-height: 1.7;
 }
 
+.sp-success__logo {
+    width: 92px;
+    height: 92px;
+    margin: 26px auto 0;
+    display: block;
+    transform: scale(1) rotate(0deg);
+    transform-origin: center;
+    filter: drop-shadow(0 10px 20px rgba(17, 17, 16, 0.12));
+    transition: transform 0.6s var(--ease-out-expo), filter 0.6s var(--ease-out-expo), opacity 0.3s ease;
+    will-change: transform;
+    cursor: pointer;
+}
+
+.sp-success__logo:hover,
+.sp-success__logo:focus-visible {
+    transform: scale(2.2) rotate(32deg) translateY(-8px);
+    filter: drop-shadow(0 28px 42px rgba(17, 17, 16, 0.24)) saturate(1.2);
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 1200px) {
     .sp-form-layout {

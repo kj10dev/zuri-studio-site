@@ -275,12 +275,53 @@ if (spForm) {
         e.preventDefault();
         if (!validateStep(3)) return;
 
+        const formData = new FormData(spForm);
+        const firstName = formData.get('firstName')?.toString().trim() || 'Client';
+        const lastName = formData.get('lastName')?.toString().trim() || '';
+        const email = formData.get('email')?.toString().trim() || '';
+        const phone = formData.get('phone')?.toString().trim() || 'Not provided';
+        const company = formData.get('company')?.toString().trim() || 'Not provided';
+        const service = formData.get('service')?.toString().trim() || 'Not specified';
+        const description = formData.get('description')?.toString().trim() || '';
+        const url = formData.get('url')?.toString().trim() || 'Not provided';
+        const budget = formData.get('budget')?.toString().trim() || 'Not specified';
+        const timeline = formData.get('timeline')?.toString().trim() || 'Not specified';
+        const deadline = formData.get('deadline')?.toString().trim() || 'Not specified';
+        const referral = formData.get('referral')?.toString().trim() || 'Not specified';
+        const extra = formData.get('extra')?.toString().trim() || 'None';
+
+        const recipient = 'zuristudio@proton.me';
+        const subject = encodeURIComponent(`Project enquiry from ${firstName} ${lastName}`.trim());
+        const body = encodeURIComponent(
+            `First Name: ${firstName}\n` +
+            `Last Name: ${lastName}\n` +
+            `Email: ${email}\n` +
+            `Phone: ${phone}\n` +
+            `Company: ${company}\n` +
+            `Service: ${service}\n` +
+            `Project URL: ${url}\n` +
+            `Budget: ${budget}\n` +
+            `Timeline: ${timeline}\n` +
+            `Deadline: ${deadline}\n` +
+            `Referral: ${referral}\n\n` +
+            `Project Description:\n${description}\n\n` +
+            `Additional Notes:\n${extra}`
+        );
+
         const submitBtn = document.getElementById('sp-submit');
         submitBtn.textContent = 'Sending…';
         submitBtn.disabled = true;
 
-        // Simulate submission
+        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
         setTimeout(() => {
+            steps.forEach(step => {
+                const num = Number(step.getAttribute('data-step'));
+                step.classList.add('done');
+                step.classList.remove('active');
+                if (num === 3) step.classList.add('active');
+            });
+
             spForm.querySelector('[data-fieldset="3"]').classList.remove('active');
             spSuccess.hidden = false;
             spSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -289,6 +330,11 @@ if (spForm) {
             gsap.from('.sp-success__icon', { scale: 0, rotation: -90, opacity: 0, duration: 0.6, ease: 'back.out(1.7)' });
             gsap.from('.sp-success__title', { y: 20, opacity: 0, duration: 0.5, delay: 0.2, ease: 'power2.out' });
             gsap.from('.sp-success__msg', { y: 20, opacity: 0, duration: 0.5, delay: 0.35, ease: 'power2.out' });
+            gsap.from('.sp-success__logo', { scale: 0.7, rotation: -25, opacity: 0, duration: 0.7, delay: 0.5, ease: 'back.out(1.8)' });
+
+            submitBtn.textContent = 'Send My Brief';
+            submitBtn.disabled = false;
+            spForm.reset();
         }, 1400);
     });
 }

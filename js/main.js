@@ -367,32 +367,38 @@ if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    const name = form.querySelector('#name')?.value?.trim() || 'New enquiry';
+    const email = form.querySelector('#email')?.value?.trim() || '';
+    const message = form.querySelector('#message')?.value?.trim() || '';
+    const recipient = 'zuristudio@proton.me';
+    const subject = encodeURIComponent(`Website enquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
     const btn = form.querySelector('.btn-primary');
     const originalText = btn.textContent;
-    btn.textContent = 'Sending...';
+    btn.textContent = 'Sent ✓';
     btn.disabled = true;
 
+    let feedback = form.querySelector('.form-feedback');
+    if (!feedback) {
+      feedback = document.createElement('div');
+      feedback.className = 'form-feedback';
+      feedback.textContent = "Thanks! We'll get back to you within 48 hours.";
+      form.appendChild(feedback);
+    }
+    feedback.classList.add('show');
+
+    form.reset();
+
     setTimeout(() => {
-      btn.textContent = 'Sent ✓';
-      btn.style.background = '#2B7A3D';
-
-      let feedback = form.querySelector('.form-feedback');
-      if (!feedback) {
-        feedback = document.createElement('div');
-        feedback.className = 'form-feedback';
-        feedback.textContent = "Thanks! We'll get back to you within 48 hours.";
-        form.appendChild(feedback);
-      }
-      feedback.classList.add('show');
-
-      form.reset();
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.disabled = false;
-        feedback.classList.remove('show');
-      }, 3000);
-    }, 1200);
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.disabled = false;
+      feedback.classList.remove('show');
+    }, 3000);
   });
 }
