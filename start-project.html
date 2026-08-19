@@ -62,8 +62,8 @@
     </section>
 
     <!-- FORM SECTION -->
-    <section class="sp-form-section">
-        <div class="sp-form-layout">
+    <section class="project-brief-form-section">
+        <div class="project-brief-form-layout">
 
             <!-- LEFT — Info panel -->
             <aside class="sp-info reveal">
@@ -95,8 +95,14 @@
             </aside>
 
             <!-- RIGHT — The form -->
-            <div class="sp-form-wrap reveal">
-                <form class="sp-form" id="sp-form" novalidate>
+            <div class="project-brief-form-wrap reveal">
+                <form class="project-brief-form" id="project-brief-form" name="project-brief" method="POST"
+                    data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+                    <input type="hidden" name="form-name" value="project-brief" />
+                    <p style="display:none">
+                        <label>Don't fill this out: <input name="bot-field" /></label>
+                    </p>
+                    <input type="hidden" name="recipient" value="zuristudio@proton.me">
 
                     <!-- Step indicator -->
                     <div class="sp-steps" aria-label="Form progress">
@@ -221,7 +227,17 @@
                                     <span class="sp-radio__box"></span>
                                     <span>$5,000+</span>
                                 </label>
+                                <label class="sp-radio">
+                                    <input type="radio" name="budget" value="custom" />
+                                    <span class="sp-radio__box"></span>
+                                    <span>Custom amount</span>
+                                </label>
                             </div>
+                        </div>
+
+                        <div class="sp-field" id="custom-amount-wrap" hidden>
+                            <label for="amount">Custom Amount</label>
+                            <input type="text" id="amount" name="amount" placeholder="e.g. $1,500" />
                         </div>
 
                         <div class="sp-field">
@@ -256,39 +272,42 @@
                                 placeholder="Additional context, files to share, special requirements…"></textarea>
                         </div>
 
+                        <div class="sp-field">
+                            <label for="attachment">Upload Project Files (optional)</label>
+                            <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.svg,.zip" multiple />
+                        </div>
+
                         <div class="sp-fieldset__nav sp-fieldset__nav--final">
                             <button type="button" class="sp-back btn-outline" data-back="2">← Back</button>
-                            <a href="design-system.html" class="btn-outline">View Design System</a>
                             <button type="submit" class="btn-primary sp-submit" id="sp-submit">
                                 Send My Brief <span class="sp-arrow">✦</span>
                             </button>
                         </div>
                     </fieldset>
 
-                    <!-- Success state -->
-                    <div class="sp-success" id="sp-success" hidden>
-                        <div class="sp-success__icon" aria-hidden="true">✦</div>
-                        <h2 class="sp-success__title">Brief Received!</h2>
-                        <p class="sp-success__msg">Thank you for reaching out. We'll review your brief and be in touch
-                            within <strong>48-72 hours</strong> with a tailored proposal.</p>
-                        <img src="./assets/images/zuri/LetterfaceLogo.jpg" alt="Zuri Studio letterface logo" class="sp-success__logo" />
-                        <div>
-                            <a href="projects.html" class="btn-outline" style="margin-top: 30px; display: inline-block;">
-                                View Our Work
-                            </a>
-                        </div>
-                    </div>
-
                 </form>
-            </div><!-- /.sp-form-wrap -->
-        </div><!-- /.sp-form-layout -->
+
+                <!-- Success state -->
+                <div class="sp-success" id="sp-success" hidden>
+                    <div class="sp-success__icon" aria-hidden="true">✦</div>
+                    <h2 class="sp-success__title">Brief Received!</h2>
+                    <p class="sp-success__msg">Thank you for reaching out. We'll review your brief and be in touch
+                        within <strong>48-72 hours</strong> with a tailored proposal.</p>
+                    <img src="./assets/images/zuri/LetterfaceLogo.svg" alt="Zuri Studio letterface logo" class="sp-success__logo" />
+                    <div>
+                        <a href="projects.html" class="btn-outline" style="margin-top: 30px; display: inline-block;">
+                            View Our Work
+                        </a>
+                    </div>
+                </div>
+            </div><!-- /.project-brief-form-wrap -->
+        </div><!-- /.project-brief-form-layout -->
     </section>
 
     <script src="js/pages.js"></script>
 <a class="whatsapp" href="https://wa.me/27704014410">
     <img src="./assets/images/zuri/whatsapp13.svg" class="whatsapp social-icon" alt="Whatsapp">
 </a>
-</body>
 
     <!-- FOOTER -->
     <footer>
@@ -305,5 +324,6 @@
             </div>
         </div>
     </footer>
+</body>
 
 </html>

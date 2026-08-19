@@ -364,41 +364,50 @@ if (typeof THREE !== 'undefined' && heroCanvas) {
 // ─── Contact Form Handler ───
 const form = document.querySelector('.contact-form');
 if (form) {
-  form.addEventListener('submit', (e) => {
+  const successBox = document.getElementById('contact-success');
+
+  form.addEventListener('submit', async (e) => {
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      form.reportValidity();
+      return;
+    }
+
     e.preventDefault();
-
-    const name = form.querySelector('#name')?.value?.trim() || 'New enquiry';
-    const email = form.querySelector('#email')?.value?.trim() || '';
-    const message = form.querySelector('#message')?.value?.trim() || '';
-    const recipient = 'zuristudio@proton.me';
-    const subject = encodeURIComponent(`Website enquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
 
     const btn = form.querySelector('.btn-primary');
     const originalText = btn.textContent;
-    btn.textContent = 'Sent ✓';
+    btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    let feedback = form.querySelector('.form-feedback');
-    if (!feedback) {
-      feedback = document.createElement('div');
-      feedback.className = 'form-feedback';
-      feedback.textContent = "Thanks! We'll get back to you within 48 hours.";
-      form.appendChild(feedback);
+    const action = form.getAttribute('action') || '/';
+    const formData = new URLSearchParams(new FormData(form));
+
+    try {
+      await fetch(action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString(),
+      });
+    } catch (error) {
+      console.warn('Netlify form submit was intercepted locally.', error);
     }
-    feedback.classList.add('show');
 
     form.reset();
+    form.hidden = true;
 
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.style.background = '';
-      btn.disabled = false;
-      feedback.classList.remove('show');
-    }, 3000);
+    if (successBox) {
+      successBox.hidden = false;
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (window.gsap) {
+        window.gsap.from('.contact-success__icon', { scale: 0, rotation: -90, opacity: 0, duration: 0.6, ease: 'back.out(1.7)' });
+        window.gsap.from('.contact-success__title', { y: 20, opacity: 0, duration: 0.5, delay: 0.2, ease: 'power2.out' });
+        window.gsap.from('.contact-success__msg', { y: 20, opacity: 0, duration: 0.5, delay: 0.35, ease: 'power2.out' });
+        window.gsap.from('.contact-success__logo', { scale: 0.7, rotation: -25, opacity: 0, duration: 0.7, delay: 0.5, ease: 'back.out(1.8)' });
+      }
+    }
+
+    btn.textContent = originalText;
+    btn.disabled = false;
   });
 }

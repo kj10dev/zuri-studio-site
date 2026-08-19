@@ -169,19 +169,30 @@
       </div>
       <div class="contact-form-wrap">
         <h4 style="margin-top:0; margin-bottom:12px; font-weight:600;">General Enquries</h4>
-        <form class="contact-form" id="contact-form">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Email Address" required />
-        <textarea id="message" placeholder="Tell us how we may assist you?"></textarea>
+        <form class="contact-form" id="contact-form" name="contact-form" netlify>
+        <input type="hidden" name="recipient" value="zuristudio@proton.me">
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" id="email" name="email" placeholder="Email Address" required />
+        <textarea id="message" name="message" placeholder="Tell us how we may assist you?"></textarea>
         <button type="submit" class="btn-primary">Send Message</button>
         </form>
+
+        <div class="contact-success" id="contact-success" hidden>
+          <div class="contact-success__icon" aria-hidden="true">✦</div>
+          <h3 class="contact-success__title">Message Sent!</h3>
+          <p class="contact-success__msg">Thanks for reaching out. We’ll review your enquiry and get back to you within 48 hours.</p>
+          <img src="./assets/images/zuri/LetterfaceLogo.svg" alt="Zuri Studio letterface logo" class="contact-success__logo" />
+          <div>
+            <a href="projects.html" class="btn-outline" style="margin-top: 24px; display: inline-block;">View Our Work</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
  
   
-  <a class="whatsapp" href="https://wa.me.">
+<a class="whatsapp" href="https://wa.me/27704014410">
     <img src="./assets/images/zuri/whatsapp13.svg" class="whatsapp social-icon" alt="Whatsapp">
   </a>
 

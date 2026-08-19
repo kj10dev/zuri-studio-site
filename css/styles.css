@@ -923,6 +923,69 @@ canvas#bg {
   margin-top: 10px;
 }
 
+.contact-success {
+  text-align: center;
+  padding: 24px 16px 8px;
+  animation: fadeUp 0.5s var(--ease-out-expo);
+}
+
+.contact-success__icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 18px;
+  animation: successLogoCycle 4s linear infinite;
+}
+
+.contact-success__title {
+  color: var(--text-light);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 12px;
+}
+
+.contact-success__msg {
+  max-width: 360px;
+  margin: 0 auto;
+  color: rgba(250, 245, 235, 0.76);
+  line-height: 1.7;
+}
+
+.contact-success__logo {
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 22px auto 0;
+  transform-origin: center;
+  cursor: pointer;
+  /* 1.2s delay = GSAP entry (0.5s delay + 0.7s duration), so CSS rotation
+     starts exactly when GSAP hands off control of `transform`. */
+  animation: successLogoCycle 4s linear 1.2s infinite;
+  filter: drop-shadow(0 12px 24px rgba(17, 17, 16, 0.18));
+  will-change: transform, filter;
+}
+
+.contact-success__logo:hover,
+.contact-success__logo:focus-visible {
+  animation-duration: 2s;
+}
+
+@keyframes successLogoCycle {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.14) rotate(90deg);
+  }
+  50% {
+    transform: scale(1.28) rotate(180deg);
+  }
+  75% {
+    transform: scale(1.14) rotate(270deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
 /* Form feedback */
 .form-feedback {
   padding: 14px 0;

@@ -5,25 +5,36 @@
    ═══════════════════════════════════════════════════ */
 
 // ─── Lenis Smooth Scroll ───
-const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smooth: true,
-});
+// Guarded: if the CDN script fails to load, the rest of this file (including
+// the multi-step form's submit handler) must still run.
+let lenis;
+const hasGSAP = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
 
-function raf(time) {
-    lenis.raf(time);
+if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
 }
-requestAnimationFrame(raf);
 
 // Sync GSAP ScrollTrigger with Lenis
-gsap.registerPlugin(ScrollTrigger);
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-});
-gsap.ticker.lagSmoothing(0);
+if (hasGSAP) {
+    gsap.registerPlugin(ScrollTrigger);
+    if (lenis) {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+    }
+}
 
 // ─── Custom Cursor ───
 const cursorDot = document.querySelector('.cursor-dot');
@@ -75,36 +86,44 @@ if (hamburger && navLinks) {
 }
 
 // ─── GSAP Reveal Animations ───
-gsap.utils.toArray('.reveal').forEach((el) => {
-    gsap.fromTo(el, {
-        opacity: 0,
-        y: 50,
-    }, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            once: true,
-        }
+if (hasGSAP) {
+    gsap.utils.toArray('.reveal').forEach((el) => {
+        gsap.fromTo(el, {
+            opacity: 0,
+            y: 50,
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                once: true,
+            }
+        });
     });
-});
 
-gsap.utils.toArray('.section-label').forEach((label) => {
-    gsap.from(label, {
-        opacity: 0,
-        x: -20,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: label,
-            start: 'top 88%',
-            once: true,
-        }
+    gsap.utils.toArray('.section-label').forEach((label) => {
+        gsap.from(label, {
+            opacity: 0,
+            x: -20,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: label,
+                start: 'top 88%',
+                once: true,
+            }
+        });
     });
-});
+} else {
+    // No GSAP available — reveal content immediately instead of leaving it invisible.
+    document.querySelectorAll('.reveal').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+}
 
 // ─── Hero Word-by-Word Reveal ───
 function revealWords(headingId) {
@@ -128,27 +147,36 @@ function revealWords(headingId) {
     heading.innerHTML = Array.from(heading.childNodes).map(wrapWords).join('');
 
     const words = heading.querySelectorAll('.word');
-    gsap.to(words, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.07,
-        ease: 'power3.out',
-        delay: 0.2,
-    });
+    if (hasGSAP) {
+        gsap.to(words, {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.07,
+            ease: 'power3.out',
+            delay: 0.2,
+        });
+    } else {
+        words.forEach(word => {
+            word.style.transform = 'none';
+            word.style.opacity = '1';
+        });
+    }
 }
 
 revealWords('projects-heading');
 revealWords('sp-heading');
 
 // Hero sub + generic hero animations
-gsap.from('.page-hero__sub, .sp-hero__sub', {
-    y: 30,
-    opacity: 0,
-    duration: 1,
-    delay: 0.9,
-    ease: 'power3.out',
-});
+if (hasGSAP) {
+    gsap.from('.page-hero__sub, .sp-hero__sub', {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.9,
+        ease: 'power3.out',
+    });
+}
 
 // ─── PROJECT FILTER ───
 const filterBtns = document.querySelectorAll('.filter-btn');
@@ -170,13 +198,17 @@ if (filterBtns.length && projectCards.length) {
 
                 if (matches) {
                     card.classList.remove('hidden');
-                    gsap.fromTo(card, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
-                } else {
+                    if (hasGSAP) {
+                        gsap.fromTo(card, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+                    }
+                } else if (hasGSAP) {
                     gsap.to(card, {
                         opacity: 0, duration: 0.2, ease: 'power2.in', onComplete: () => {
                             card.classList.add('hidden');
                         }
                     });
+                } else {
+                    card.classList.add('hidden');
                 }
             });
         });
@@ -184,13 +216,28 @@ if (filterBtns.length && projectCards.length) {
 }
 
 // ─── MULTI-STEP FORM ───
-const spForm = document.getElementById('sp-form');
+const spForm = document.getElementById('project-brief-form');
 const spSuccess = document.getElementById('sp-success');
 
 if (spForm) {
     const fieldsets = spForm.querySelectorAll('.sp-fieldset');
     const steps = document.querySelectorAll('.sp-step');
     const stepLines = document.querySelectorAll('.sp-step-line');
+    const customAmountWrap = document.getElementById('custom-amount-wrap');
+    const budgetRadios = spForm.querySelectorAll('input[name="budget"]');
+    const customAmountInput = document.getElementById('amount');
+
+    budgetRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (!customAmountWrap) return;
+            const isCustom = radio.value === 'custom' && radio.checked;
+            customAmountWrap.hidden = !isCustom;
+            if (!isCustom && customAmountInput) {
+                customAmountInput.value = '';
+                customAmountInput.classList.remove('error');
+            }
+        });
+    });
 
     // Go to a given step (1-indexed)
     function goToStep(n) {
@@ -243,7 +290,15 @@ if (spForm) {
             }
         });
 
-        if (!valid) {
+        const customBudgetSelected = current.querySelector('input[name="budget"][value="custom"]:checked');
+        const customAmountField = current.querySelector('#amount');
+        if (customBudgetSelected && customAmountField && !customAmountField.value.trim()) {
+            valid = false;
+            customAmountField.classList.add('error');
+            customAmountField.addEventListener('input', () => customAmountField.classList.remove('error'), { once: true });
+        }
+
+        if (!valid && hasGSAP) {
             // Shake the form
             gsap.fromTo(spForm, { x: -6 }, { x: 0, duration: 0.4, ease: 'elastic.out(1, 0.3)', clearProps: 'x' });
         }
@@ -271,71 +326,43 @@ if (spForm) {
     });
 
     // Submit
-    spForm.addEventListener('submit', (e) => {
+    spForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!validateStep(3)) return;
-
-        const formData = new FormData(spForm);
-        const firstName = formData.get('firstName')?.toString().trim() || 'Client';
-        const lastName = formData.get('lastName')?.toString().trim() || '';
-        const email = formData.get('email')?.toString().trim() || '';
-        const phone = formData.get('phone')?.toString().trim() || 'Not provided';
-        const company = formData.get('company')?.toString().trim() || 'Not provided';
-        const service = formData.get('service')?.toString().trim() || 'Not specified';
-        const description = formData.get('description')?.toString().trim() || '';
-        const url = formData.get('url')?.toString().trim() || 'Not provided';
-        const budget = formData.get('budget')?.toString().trim() || 'Not specified';
-        const timeline = formData.get('timeline')?.toString().trim() || 'Not specified';
-        const deadline = formData.get('deadline')?.toString().trim() || 'Not specified';
-        const referral = formData.get('referral')?.toString().trim() || 'Not specified';
-        const extra = formData.get('extra')?.toString().trim() || 'None';
-
-        const recipient = 'zuristudio@proton.me';
-        const subject = encodeURIComponent(`Project enquiry from ${firstName} ${lastName}`.trim());
-        const body = encodeURIComponent(
-            `First Name: ${firstName}\n` +
-            `Last Name: ${lastName}\n` +
-            `Email: ${email}\n` +
-            `Phone: ${phone}\n` +
-            `Company: ${company}\n` +
-            `Service: ${service}\n` +
-            `Project URL: ${url}\n` +
-            `Budget: ${budget}\n` +
-            `Timeline: ${timeline}\n` +
-            `Deadline: ${deadline}\n` +
-            `Referral: ${referral}\n\n` +
-            `Project Description:\n${description}\n\n` +
-            `Additional Notes:\n${extra}`
-        );
 
         const submitBtn = document.getElementById('sp-submit');
         submitBtn.textContent = 'Sending…';
         submitBtn.disabled = true;
 
-        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        const action = spForm.getAttribute('action') || '/';
+        const formData = new URLSearchParams(new FormData(spForm));
 
-        setTimeout(() => {
-            steps.forEach(step => {
-                const num = Number(step.getAttribute('data-step'));
-                step.classList.add('done');
-                step.classList.remove('active');
-                if (num === 3) step.classList.add('active');
+        try {
+            await fetch(action, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData.toString(),
             });
+        } catch (error) {
+            console.warn('Project brief submission was intercepted locally.', error);
+        }
 
-            spForm.querySelector('[data-fieldset="3"]').classList.remove('active');
+        spForm.reset();
+        spForm.hidden = true;
+
+        if (spSuccess) {
             spSuccess.hidden = false;
             spSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-            // Animate success
-            gsap.from('.sp-success__icon', { scale: 0, rotation: -90, opacity: 0, duration: 0.6, ease: 'back.out(1.7)' });
-            gsap.from('.sp-success__title', { y: 20, opacity: 0, duration: 0.5, delay: 0.2, ease: 'power2.out' });
-            gsap.from('.sp-success__msg', { y: 20, opacity: 0, duration: 0.5, delay: 0.35, ease: 'power2.out' });
-            gsap.from('.sp-success__logo', { scale: 0.7, rotation: -25, opacity: 0, duration: 0.7, delay: 0.5, ease: 'back.out(1.8)' });
-
-            submitBtn.textContent = 'Send My Brief';
-            submitBtn.disabled = false;
-            spForm.reset();
-        }, 1400);
+            if (hasGSAP) {
+                gsap.from('.sp-success__icon', { scale: 0, rotation: -90, opacity: 0, duration: 0.6, ease: 'back.out(1.7)' });
+                gsap.from('.sp-success__title', { y: 20, opacity: 0, duration: 0.5, delay: 0.2, ease: 'power2.out' });
+                gsap.from('.sp-success__msg', { y: 20, opacity: 0, duration: 0.5, delay: 0.35, ease: 'power2.out' });
+                // Logo GSAP entry (0.5s delay + 0.7s duration = 1.2s total) hands off cleanly
+                // to the CSS `successLogoCycle` animation which also starts at 1.2s delay.
+                gsap.from('.sp-success__logo', { scale: 0.7, rotation: -25, opacity: 0, duration: 0.7, delay: 0.5, ease: 'back.out(1.8)' });
+            }
+        }
     });
 }
 
@@ -359,6 +386,60 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// ─── Contact Form Handler ───
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        const successBox = document.getElementById('contact-success');
+
+        contactForm.addEventListener('submit', async (e) => {
+            if (!contactForm.checkValidity()) {
+                e.preventDefault();
+                contactForm.reportValidity();
+                return;
+            }
+
+            e.preventDefault();
+
+            const btn = contactForm.querySelector('.btn-primary');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending…';
+            btn.disabled = true;
+
+            const action = contactForm.getAttribute('action') || '/';
+            const formData = new URLSearchParams(new FormData(contactForm));
+
+            try {
+                await fetch(action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData.toString(),
+                });
+            } catch (error) {
+                console.warn('Netlify form submit was intercepted locally.', error);
+            }
+
+            contactForm.reset();
+            contactForm.hidden = true;
+
+            if (successBox) {
+                successBox.hidden = false;
+                successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (hasGSAP) {
+                    gsap.from('.contact-success__icon', { scale: 0, rotation: -90, opacity: 0, duration: 0.6, ease: 'back.out(1.7)' });
+                    gsap.from('.contact-success__title', { y: 20, opacity: 0, duration: 0.5, delay: 0.2, ease: 'power2.out' });
+                    gsap.from('.contact-success__msg', { y: 20, opacity: 0, duration: 0.5, delay: 0.35, ease: 'power2.out' });
+                    gsap.from('.contact-success__logo', { scale: 0.7, rotation: -25, opacity: 0, duration: 0.7, delay: 0.5, ease: 'back.out(1.8)' });
+                }
+            }
+
+            btn.textContent = originalText;
+            btn.disabled = false;
+        });
+    }
+});
+
 // ─── Shared Logic for all pages (Optional) ───
 // This file can now house shared logic that isn't modal-specific,
 // while modal logic lives in projects.html for file:// compatibility.
+
