@@ -4,6 +4,10 @@
    filters, multi-step form, and animations
    ═══════════════════════════════════════════════════ */
 
+// Backend that actually sends form submissions to the Proton inbox.
+// Update this once the backend is deployed on Render.
+const ZURI_API_BASE = "https://zuri-studio-form-backend.onrender.com";
+
 // ─── Lenis Smooth Scroll ───
 // Guarded: if the CDN script fails to load, the rest of this file (including
 // the multi-step form's submit handler) must still run.
@@ -325,26 +329,62 @@ if (spForm) {
         });
     });
 
+    // Inline error message under the form (used when the backend rejects
+    // the submission or the request fails outright)
+    function showSpFormError(message) {
+        let el = spForm.querySelector('.form-error-msg');
+        if (!el) {
+            el = document.createElement('p');
+            el.className = 'form-error-msg';
+            el.style.color = '#c0392b';
+            el.style.marginTop = '12px';
+            el.style.fontSize = '0.9em';
+            spForm.appendChild(el);
+        }
+        el.textContent = message;
+    }
+
     // Submit
+    // Sends to our own Render backend (see server.js), which relays the
+    // brief — including any uploaded files — to the Proton inbox by email.
+    // Uses FormData directly (not URLSearchParams, which silently mangles
+    // File objects into the string "[object File]") so attachments survive
+    // the trip, matching the form's enctype="multipart/form-data".
     spForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!validateStep(3)) return;
 
         const submitBtn = document.getElementById('sp-submit');
+        const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Sending…';
         submitBtn.disabled = true;
 
-        const action = spForm.getAttribute('action') || '/';
-        const formData = new URLSearchParams(new FormData(spForm));
+        // Do NOT set a Content-Type header here — the browser needs to set
+        // its own multipart boundary based on the FormData contents.
+        const formData = new FormData(spForm);
+
+        let ok = false;
+        let errorMessage = 'Something went wrong. Please try again or email us directly.';
 
         try {
-            await fetch(action, {
+            const res = await fetch(`${ZURI_API_BASE}/api/project-brief`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: formData.toString(),
+                body: formData,
             });
+            const data = await res.json();
+            ok = Boolean(data.ok);
+            if (!ok && data.error) errorMessage = data.error;
         } catch (error) {
-            console.warn('Project brief submission was intercepted locally.', error);
+            console.error('Project brief submission failed:', error);
+            errorMessage = 'Network error — please try again or email us directly.';
+        }
+
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+
+        if (!ok) {
+            showSpFormError(errorMessage);
+            return;
         }
 
         spForm.reset();
@@ -387,36 +427,70 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ─── Contact Form Handler ───
+// NOTE: `.contact-form` only exists on index.html, which loads main.js
+// (not pages.js) — so this block doesn't currently run anywhere. Fixed
+// anyway to match main.js's handler, in case a future page loads both.
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         const successBox = document.getElementById('contact-success');
 
+        function showContactFormError(message) {
+            let el = contactForm.querySelector('.form-error-msg');
+            if (!el) {
+                el = document.createElement('p');
+                el.className = 'form-error-msg';
+                el.style.color = '#c0392b';
+                el.style.marginTop = '12px';
+                el.style.fontSize = '0.9em';
+                contactForm.appendChild(el);
+            }
+            el.textContent = message;
+        }
+
         contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
             if (!contactForm.checkValidity()) {
-                e.preventDefault();
                 contactForm.reportValidity();
                 return;
             }
-
-            e.preventDefault();
 
             const btn = contactForm.querySelector('.btn-primary');
             const originalText = btn.textContent;
             btn.textContent = 'Sending…';
             btn.disabled = true;
 
-            const action = contactForm.getAttribute('action') || '/';
-            const formData = new URLSearchParams(new FormData(contactForm));
+            const payload = {
+                name: contactForm.querySelector('#name')?.value.trim() || '',
+                email: contactForm.querySelector('#email')?.value.trim() || '',
+                message: contactForm.querySelector('#message')?.value.trim() || '',
+                'bot-field': contactForm.querySelector('[name="bot-field"]')?.value || '',
+            };
+
+            let ok = false;
+            let errorMessage = 'Something went wrong. Please try again or email us directly.';
 
             try {
-                await fetch(action, {
+                const res = await fetch(`${ZURI_API_BASE}/api/contact`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: formData.toString(),
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
                 });
+                const data = await res.json();
+                ok = Boolean(data.ok);
+                if (!ok && data.error) errorMessage = data.error;
             } catch (error) {
-                console.warn('Netlify form submit was intercepted locally.', error);
+                console.error('Contact form submission failed:', error);
+                errorMessage = 'Network error — please try again or email us directly.';
+            }
+
+            btn.textContent = originalText;
+            btn.disabled = false;
+
+            if (!ok) {
+                showContactFormError(errorMessage);
+                return;
             }
 
             contactForm.reset();
@@ -432,9 +506,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     gsap.from('.contact-success__logo', { scale: 0.7, rotation: -25, opacity: 0, duration: 0.7, delay: 0.5, ease: 'back.out(1.8)' });
                 }
             }
-
-            btn.textContent = originalText;
-            btn.disabled = false;
         });
     }
 });

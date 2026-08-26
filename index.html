@@ -169,11 +169,11 @@
       </div>
       <div class="contact-form-wrap">
         <h4 style="margin-top:0; margin-bottom:12px; font-weight:600;">General Enquries</h4>
-        <form class="contact-form" id="contact-form" name="contact-form" netlify>
-        <input type="hidden" name="recipient" value="zuristudio@proton.me">
+        <form class="contact-form" id="contact-form" name="contact-form">
+        <input type="text" name="bot-field" autocomplete="off" tabindex="-1" style="position:absolute; left:-9999px;" aria-hidden="true" />
         <input type="text" id="name" name="name" placeholder="Your Name" required />
         <input type="email" id="email" name="email" placeholder="Email Address" required />
-        <textarea id="message" name="message" placeholder="Tell us how we may assist you?"></textarea>
+        <textarea id="message" name="message" placeholder="Tell us how we may assist you?" required></textarea>
         <button type="submit" class="btn-primary">Send Message</button>
         </form>
 

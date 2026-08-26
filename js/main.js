@@ -2,6 +2,10 @@
    ZURI STUDIO — Futuristic Motion & Interactions
    ═══════════════════════════════════════════════════ */
 
+// Backend that actually sends form submissions to the Proton inbox.
+// Update this once the backend is deployed on Render.
+const ZURI_API_BASE = "https://zuri-studio-form-backend.onrender.com";
+
 // ─── Lenis Smooth Scroll ───
 let lenis;
 if (typeof Lenis !== 'undefined') {
@@ -362,35 +366,70 @@ if (typeof THREE !== 'undefined' && heroCanvas) {
 }
 
 // ─── Contact Form Handler ───
+// Sends to our own Render backend (see server.js), which relays the
+// message to the Proton inbox by email. Success is only shown once the
+// backend confirms the email actually sent — no more fake "Sent!" on a
+// silently-failed request.
 const form = document.querySelector('.contact-form');
 if (form) {
   const successBox = document.getElementById('contact-success');
 
+  function showFormError(message) {
+    let el = form.querySelector('.form-error-msg');
+    if (!el) {
+      el = document.createElement('p');
+      el.className = 'form-error-msg';
+      el.style.color = '#c0392b';
+      el.style.marginTop = '12px';
+      el.style.fontSize = '0.9em';
+      form.appendChild(el);
+    }
+    el.textContent = message;
+  }
+
   form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     if (!form.checkValidity()) {
-      e.preventDefault();
       form.reportValidity();
       return;
     }
-
-    e.preventDefault();
 
     const btn = form.querySelector('.btn-primary');
     const originalText = btn.textContent;
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    const action = form.getAttribute('action') || '/';
-    const formData = new URLSearchParams(new FormData(form));
+    const payload = {
+      name: form.querySelector('#name')?.value.trim() || '',
+      email: form.querySelector('#email')?.value.trim() || '',
+      message: form.querySelector('#message')?.value.trim() || '',
+      'bot-field': form.querySelector('[name="bot-field"]')?.value || '',
+    };
+
+    let ok = false;
+    let errorMessage = 'Something went wrong. Please try again or email us directly.';
 
     try {
-      await fetch(action, {
+      const res = await fetch(`${ZURI_API_BASE}/api/contact`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData.toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
+      const data = await res.json();
+      ok = Boolean(data.ok);
+      if (!ok && data.error) errorMessage = data.error;
     } catch (error) {
-      console.warn('Netlify form submit was intercepted locally.', error);
+      console.error('Contact form submission failed:', error);
+      errorMessage = 'Network error — please try again or email us directly.';
+    }
+
+    btn.textContent = originalText;
+    btn.disabled = false;
+
+    if (!ok) {
+      showFormError(errorMessage);
+      return;
     }
 
     form.reset();
@@ -406,8 +445,5 @@ if (form) {
         window.gsap.from('.contact-success__logo', { scale: 0.7, rotation: -25, opacity: 0, duration: 0.7, delay: 0.5, ease: 'back.out(1.8)' });
       }
     }
-
-    btn.textContent = originalText;
-    btn.disabled = false;
   });
 }
