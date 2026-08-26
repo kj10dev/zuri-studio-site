@@ -6,7 +6,7 @@
 
 // Backend that actually sends form submissions to the Proton inbox.
 // Update this once the backend is deployed on Render.
-const ZURI_API_BASE = "https://zuri-studio-form-backend.onrender.com";
+const ZURI_API_BASE = "https://zuri-studio-form-backend.onrender.com"
 
 // ─── Lenis Smooth Scroll ───
 // Guarded: if the CDN script fails to load, the rest of this file (including
